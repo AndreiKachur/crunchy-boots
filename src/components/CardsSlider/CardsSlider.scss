@@ -1,0 +1,76 @@
+@import '../../variables.scss';
+
+.slick{
+    &-list{
+    }
+    &-track{
+        padding-top: 8vh;
+        background-color: $whity;
+        height: 95vh;
+        & div{
+            background-color: inherit;
+        }
+    }
+    &-dots{
+        z-index: 10;
+        background-color: $whity;
+        bottom: 0px;
+        height:15px;
+        padding-bottom: 20px;
+        & li button {
+            background: $whity;
+            &::before{
+                line-height: 0;
+                font-size: 1.5rem;
+            }
+        }
+    }
+    &-arrow{
+        z-index: 10;
+        background: none;
+    }
+    &-prev{
+        left: 1rem;
+    }
+    &-next{
+        right: 3rem;
+    }
+    &-prev::before,
+    &-next::before{
+        font-size: 3rem;
+        color:rgba(78, 78, 78, 0.5);
+    }
+    &-slide{
+        background-color: $whity;
+        height: 98%;
+        overflow:hidden;
+    }
+}
+
+.slider-card{
+    // border-top: 1px solid rgb(199, 199, 199);
+    border-left: 1px solid rgb(199, 199, 199);
+    border-bottom: 1px solid rgb(199, 199, 199);
+
+    &__img{
+        width: 100%;
+        height: 60vh;
+        object-fit: cover;
+        object-position: bottom;
+        padding: 0px 0px 10px;
+        background: $whity;
+    }
+    &__text{
+        background:$whity;
+        color: rgb(70, 70, 70);
+        width:100%;
+        padding: 5px 10px 30px 10px;
+        & li{
+            background:$whity;
+            padding: 5px 10px;
+            list-style: none;
+            font-size: 1.5rem;
+        }
+    }
+
+}

@@ -1,0 +1,50 @@
+@import '../../variables';
+
+.footer{
+    display: flex;
+    justify-content: space-around;
+    // flex-wrap: wrap;
+    background: $pink;
+    color: $whity;
+    font-weight: 600;
+    width: 100%;
+    padding: 5rem 3rem;
+    
+    &>*{
+        list-style-type: none;
+        margin: 1rem;
+    }
+    //contacts
+    &__contacts{
+        line-height: 1.5rem;
+    }
+}
+.icons{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    & span{
+        display: flex;
+        align-items: center;
+        padding-left: .5rem ;
+        font-size: 1.2rem;
+    }
+    &__item{
+        display: flex;
+        align-items: center;
+        padding-bottom: .6rem;   
+    }
+}
+.copyright{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $whity;
+    color: $pink;
+    padding: 2rem;
+    font-weight: 900;
+    &__logo{
+        font-size: 1.4rem;
+        padding-right: .2rem;
+    }
+}
