@@ -1,0 +1,50 @@
+@import '../../variables.scss';
+
+.cart-empty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding: 15vh 0;
+    & a{
+        text-decoration: none;
+    }
+    & img{
+        max-width:200px;
+        padding-bottom: 3rem;
+    }
+    &__text{
+        max-width:200px;
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+        & h3{
+            text-align: center;
+            color: $pink;
+        }
+    }
+    &__not-worry{
+        max-width:300px;
+        background-color: $pink;
+        color: $whity;
+        padding: 1rem;
+        margin: 1rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        border: 2px solid $whity;
+        border-radius: .7rem;
+        &:hover{
+            background-color: $whity;
+            border: 2px solid $pink;
+            color:$pink;
+            cursor: pointer;
+        }
+        &:active{
+            background-color: $pink;
+            color: $whity;
+            border: 2px solid $pink;
+        }
+    }
+}

@@ -18,6 +18,13 @@
     &>*:hover{
         cursor: pointer;
     }
+
+    &__wrapper{
+        display: flex;
+        align-items: center;
+        color:inherit;
+    }
+    
     //logo
     &__logo{
         position:absolute;

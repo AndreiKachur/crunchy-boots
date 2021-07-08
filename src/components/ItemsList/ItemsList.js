@@ -1,5 +1,6 @@
 import React from 'react'
 import Item from '../Item';
+import Footer from '../Footer';
 import './ItemsList.scss'
 
 function ItemsList() {

@@ -8,14 +8,15 @@ import { MenuItems } from './MenuItems.js'
 function Navbar() {
     return (
         <nav className='nav'>
-            <div className='nav__logo'>
-                {/* <NavLink to='/'> */}
-                <SiCrunchbase />
-                <span className='nav__logo-title'>
-                    Crunchy Boots
+            <NavLink to='/' className='nav__wrapper'>
+                <div className='nav__logo'>
+                    <SiCrunchbase />
+                    <span className='nav__logo-title'>
+                        Crunchy Boots
                 </span>
-                {/* </NavLink> */}
-            </div>
+                </div>
+            </NavLink>
+
             <ul className='nav__list'>
                 {MenuItems.map((item, index) => {
                     if (item.title === 'Video') {
@@ -36,11 +37,13 @@ function Navbar() {
                     )
                 })}
             </ul>
-            <div className='nav__cart'>
-                <RiShoppingCartLine />
-                <p className='nav__cart-title'>Cart:</p>
-                <span className='nav__cart-price'>15$</span>
-            </div>
+            <NavLink to='cart' className='nav__wrapper'>
+                <div className='nav__cart'>
+                    <RiShoppingCartLine />
+                    <p className='nav__cart-title'>Cart:</p>
+                    <span className='nav__cart-price'>15$</span>
+                </div>
+            </NavLink>
         </nav>
     )
 }
