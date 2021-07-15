@@ -1,14 +1,20 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux'
 import Slider from "react-slick";
+import WithBootsService from '../Hoc';
+import Button from "../Button";
+import * as actions from '../../actions/actions.js'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import './CardsSlider.scss';
-import Sneaker from './img/01.webp'
-import Sneaker02 from './img/02.jpg'
-import Sneaker03 from './img/03.jpg'
 
-export default class ImageSlider extends Component {
+class ImageSlider extends Component {
+
     render() {
+        const { boots, loading, changeCart:addToCart } = this.props;
+
+        if (loading) return <h2 style={{ margin: '5rem' }}>Loading...</h2>
+
         const settings = {
             dots: true,
             infinite: true,
@@ -17,57 +23,42 @@ export default class ImageSlider extends Component {
             // autoplay: true,
             // responsive: [array-breakpoints],
             speed: 500,
-            slidesToShow: 4,
-            slidesToScroll: 2,
+            slidesToShow: 2,
+            slidesToScroll: 1,
         };
         return (
             <div>
                 <Slider {...settings} className='slick-list'>
-                    <div className='slider-card'>
-                        <img className='slider-card__img' src={Sneaker} alt='sneaker' />
-                        <div className='slider-card__text'>
-                            <li>Sneaker</li>
-                            <li>Price: 10$</li>
-                        </div>
-                    </div>
-                    <div className='slider-card'>
-                        <img className='slider-card__img' src={Sneaker02} alt='sneaker02-1' />
-                        <div className='slider-card__text'>
-                            <li>Sam Smith</li>
-                            <li>Price: 15$</li>
-                        </div>
-                    </div>
-                    <div className='slider-card'>
-                        <img className='slider-card__img' src={Sneaker03} alt='sneaker' />
-                        <div className='slider-card__text'>
-                            <li>Smith Originals</li>
-                            <li>Price: 17$</li>
-                        </div>
-                    </div>
-                    <div className='slider-card'>
-                        <img className='slider-card__img' src={Sneaker} alt='sneaker' />
-                        <div className='slider-card__text'>
-                            <li>Sneaker</li>
-                            <li>Price: 10$</li>
-                        </div>
-                    </div>
-                    <div className='slider-card'>
-                        <img className='slider-card__img' src={Sneaker02} alt='sneaker02-1' />
-                        <div className='slider-card__text'>
-                            <li>Sam Smith</li>
-                            <li>Price: 15$</li>
-                        </div>
-                    </div>
-                    <div className='slider-card'>
-                        <img className='slider-card__img' src={Sneaker03} alt='sneaker' />
-                        <div className='slider-card__text'>
-                            <li>Smith Originals</li>
-                            <li>Price: 17$</li>
-                        </div>
-                    </div>
+                    {boots.map(item => {
+                        const { title, price, url, id } = item
+
+                        return (
+                            <div className='slider-card'
+                                key={id}>
+                                <img className='slider-card__img' src={url} alt={title} />
+                                <div className='slider-card__column'>
+                                    <div className='slider-card__text'>
+                                        <li>{title}</li>
+                                        <li>Price: {price}$</li>
+                                    </div>
+                                    <button
+                                        className='slider-card__btn'
+                                        onClick={() => addToCart(id)}>
+                                        Add To Cart
+                                    </button>
+                                </div>
+                            </div>
+                        )
+                    })}
 
                 </Slider>
             </div >
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    boots: state.boots,
+    loading: state.loading
+})
+export default WithBootsService()(connect(mapStateToProps, actions)(ImageSlider))

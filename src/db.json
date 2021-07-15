@@ -1,0 +1,158 @@
+{
+	"boots": [
+		{
+			"id": 1,
+			"title": "Sam Smith",
+			"category": "sneakers",
+			"url": "/img/01.webp",
+			"sex": "female",
+			"price": 23,
+			"actualSize":0,
+			"sizes": [
+				{
+					"size":34,
+					"id":134,
+					"rest":3
+				},
+				{
+					"size":35,
+					"id":135,
+					"rest":0
+				},
+				{
+					"size":36,
+					"id":136,
+					"rest":5
+				},
+				{
+					"size":37,
+					"id":137,
+					"rest":1
+				},
+				{
+					"size":38,
+					"id":138,
+					"rest":5
+				},
+				{
+					"size":39,
+					"id":139,
+					"rest":2
+				},
+				{
+					"size":40,
+					"id":140,
+					"rest":5
+				},
+				{
+					"size":41,
+					"id":141,
+					"rest":2
+				}
+			]
+		},
+		{
+			"id": 2,
+			"title": "Smith Originals",
+			"category": "sneakers",
+			"url": "/img/02.jpg",
+			"sex": "female",
+			"price": 18,
+			"actualSize":0,
+			"sizes": [
+				{
+					"size":34,
+					"id":234,
+					"rest":3
+				},
+				{
+					"size":35,
+					"id":235,
+					"rest":0
+				},
+				{
+					"size":36,
+					"id":236,
+					"rest":5
+				},
+				{
+					"size":37,
+					"id":237,
+					"rest":1
+				},
+				{
+					"size":38,
+					"id":238,
+					"rest":0
+				},
+				{
+					"size":39,
+					"id":239,
+					"rest":2
+				},
+				{
+					"size":40,
+					"id":240,
+					"rest":5
+				},
+				{
+					"size":41,
+					"id":241,
+					"rest":2
+				}
+			]
+		},
+		{
+			"id": 3,
+			"title": "Sneakers",
+			"category": "sneakers",
+			"url": "/img/03.jpg",
+			"sex": "female",
+			"price": 15,
+			"actualSize":0,
+			"sizes": [
+				{
+					"size":34,
+					"id":334,
+					"rest":0
+				},
+				{
+					"size":35,
+					"id":335,
+					"rest":0
+				},
+				{
+					"size":36,
+					"id":336,
+					"rest":1
+				},
+				{
+					"size":37,
+					"id":337,
+					"rest":1
+				},
+				{
+					"size":38,
+					"id":338,
+					"rest":3
+				},
+				{
+					"size":39,
+					"id":339,
+					"rest":0
+				},
+				{
+					"size":40,
+					"id":340,
+					"rest":1
+				},
+				{
+					"size":41,
+					"id":341,
+					"rest":2
+				}
+			]
+		}
+		
+	]
+}

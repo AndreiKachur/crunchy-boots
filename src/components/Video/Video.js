@@ -6,7 +6,7 @@ function Video() {
     return (
         <div className='video'>
             <video src={clip} className='bgvideo'
-                loop muted='true' autoplay='true' controls
+                loop muted='true' autoPlay='true' controls
             />
         </div>
     )

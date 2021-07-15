@@ -2,8 +2,8 @@
 
 .item{
     position: relative;
-    max-width:250px;
-    height: 400px;
+    max-width:260px;
+    height: 450px;
     margin: 1rem;
     background:$whity;
     border-radius: 10px;
@@ -11,16 +11,49 @@
     font-size: 1rem;
     font-weight: 700;
     list-style: none;
-
+    
     &__img{
         width: 100%;
-        height: 60%;
+        height: 65%;
         object-fit: cover;
         object-position: bottom;
     }
+    &__columns{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
     &__text{
         color: rgb(70, 70, 70);
-        padding: 10px;
+        // padding: 10px 10px 15px 15px;
+    }
+    &__sizes{
+        width:80px;
+        // padding: 10px 0px;
+    }
+    &__size{
+        background-color: $whity;
+        color:rgb(70, 70, 70);
+        border: 1px solid rgb(70, 70, 70);
+        width: 38px;
+        font-size: .8rem;
+        font-weight: 700;
+        margin: 0 1px;
+
+        &:hover{
+            background-color: rgb(70, 70, 70);
+            color: $whity;
+        }
+        &:disabled{
+            background-color: $whity;
+            border: 1px solid $grey;
+            color: $grey;
+        }
+        &_checked{
+            background-color: rgb(70, 70, 70);
+            color: $whity;
+        }
     }
 
 }

@@ -1,11 +1,19 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 import './Navbar.scss'
 import { SiCrunchbase } from 'react-icons/si';
 import { RiShoppingCartLine } from 'react-icons/ri';
 import { MenuItems } from './MenuItems.js'
 
-function Navbar() {
+function Navbar({ cart }) {
+    
+    const calculateSum = () => cart.reduce((acc, item) => acc + item.price*item.amount, 0)
+
+    const price = cart.length === 0 ?
+        <span className='nav__cart-price'>0$</span> :
+        <span className='nav__cart-price'>{calculateSum()}$</span>
+
     return (
         <nav className='nav'>
             <NavLink to='/' className='nav__wrapper'>
@@ -13,26 +21,17 @@ function Navbar() {
                     <SiCrunchbase />
                     <span className='nav__logo-title'>
                         Crunchy Boots
-                </span>
+                    </span>
                 </div>
             </NavLink>
 
             <ul className='nav__list'>
                 {MenuItems.map((item, index) => {
-                    if (item.title === 'Video') {
-                        return (
-                            <li key={index} className='nav__list-item'>
-                                <NavLink className={item.cName} to={item.url}>
-                                    {item.title}
-                                </NavLink>
-                            </li>
-                        )
-                    }
                     return (
                         <li key={index} className='nav__list-item'>
-                            <a className={item.cName} href={item.url}>
+                            <NavLink className={item.cName} to={item.url}>
                                 {item.title}
-                            </a>
+                            </NavLink>
                         </li>
                     )
                 })}
@@ -41,11 +40,11 @@ function Navbar() {
                 <div className='nav__cart'>
                     <RiShoppingCartLine />
                     <p className='nav__cart-title'>Cart:</p>
-                    <span className='nav__cart-price'>15$</span>
+                    {price}
                 </div>
             </NavLink>
         </nav>
     )
 }
-
-export default Navbar
+const mapStateToProps = state => ({ cart: state.cart })
+export default connect(mapStateToProps, {})(Navbar)

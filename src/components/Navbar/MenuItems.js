@@ -6,17 +6,17 @@ export const MenuItems = [
     },
     {
         title: 'Sneakers',
-        url: 'sneakers',
+        url: '/sneakers',
         cName: 'nav__list-item-links'
     },
     {
         title: 'Contacts',
-        url: 'contacts',
+        url: '/contacts',
         cName: 'nav__list-item-links'
     },
     {
         title: 'Video',
-        url: 'video',
+        url: '/video',
         cName: 'nav__list-item-links nav__video'
     }
 ]
