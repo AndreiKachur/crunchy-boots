@@ -34,11 +34,11 @@ function Navbar({ cart }) {
         // pageWrapId={"page-wrap"}
         // outerContainerId={"outer-container"} 
         >
-        <ul className='burger-menu' onClick={() => setBurgerMenu (!burgerMenu)}>
+        <ul className='burger-menu' onClick={toogleBurgerMenu}>
           {MenuItems.map((item, index) => {
             return (
               <li key={index} className='burger-menu__item' >
-                <NavLink onClick={() => setBurgerMenu (!burgerMenu)}
+                <NavLink onClick={toogleBurgerMenu}
                   className='burger-menu__item-links'
                   to={item.url}>
                   {item.title}
