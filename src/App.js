@@ -10,8 +10,9 @@ import Cart from './components/Cart'
 import './App.scss';
 
 function App() {
+ 
   return (
-    <Router>
+    <Router >
       <Navbar />
 
       <Switch>
@@ -21,7 +22,6 @@ function App() {
         <Route path='/video' component={Video} />
         <Route path='/cart' component={Cart} />
       </Switch>
-
     </Router>
   );
 }

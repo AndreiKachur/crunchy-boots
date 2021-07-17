@@ -4,7 +4,10 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 1.5rem 0 0 0;
+    // margin: 1.5rem 0 0 0;
     padding: 4rem 0;
     background: $grey;
+    @media(max-width:880px){
+        padding: 1rem 0;
+    }
 }

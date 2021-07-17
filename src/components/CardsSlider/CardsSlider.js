@@ -21,7 +21,24 @@ class ImageSlider extends Component {
             draggable: true,
             // autoplaySpeed: 5000,
             // autoplay: true,
-            // responsive: [array-breakpoints],
+            responsive: [
+                // {
+                //   breakpoint: 1000,
+                //   settings: {
+                //     slidesToShow: 2,
+                    // slidesToScroll: 3,
+                    // infinite: true,
+                    // dots: true
+                //   }
+                // },
+                {
+                  breakpoint: 790,
+                  settings: {
+                    slidesToShow: 1,
+                    // initialSlide: 2
+                  }
+                }
+            ],
             speed: 500,
             slidesToShow: 2,
             slidesToScroll: 1,

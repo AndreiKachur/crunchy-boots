@@ -34,18 +34,18 @@ function Footer() {
                 </ul>
 
                 <div className='icons'>
-                    <div className='icons__item'>
+                    <a className='icons__item' href='https://ru-ru.facebook.com/'>
                         < FaFacebookSquare />
                         <span>facebook</span>
-                    </div>
-                    <div className='icons__item'>
+                    </a>
+                    <a className='icons__item' href='https://twitter.com/'>
                         < FaTwitterSquare />
                         <span>twitter</span>
-                    </div>
-                    <div className='icons__item'>
+                    </a>
+                    <a className='icons__item' href='https://www.instagram.com/'>
                         < AiFillInstagram />
                         <span>instagram</span>
-                    </div>
+                    </a>
                 </div>
 
                 <div className='icons'>

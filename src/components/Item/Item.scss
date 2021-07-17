@@ -11,6 +11,9 @@
     font-size: 1rem;
     font-weight: 700;
     list-style: none;
+    @media(max-width:880px){
+        max-width: 310px;
+    }
     
     &__img{
         width: 100%;
