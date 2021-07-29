@@ -7,13 +7,13 @@
     background: $pink;
     color: $whity;
     font-weight: 600;
-    max-width: 100%;
-    padding: 5rem 3rem;
+    width: 100vw;
+    padding: 10rem 6rem;
 
     @media (max-width:600px){
         flex-direction: column;
         align-content: center;
-        padding: 2rem 1rem;
+        padding: 4rem 1rem 2.5rem;
     }
     &>*{
         list-style-type: none;
@@ -54,6 +54,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100vw;
     background: $whity;
     color: $pink;
     padding: 2rem;

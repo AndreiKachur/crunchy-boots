@@ -1,0 +1,41 @@
+@import '../../variables';
+
+.filter-bar{
+ 
+    &__wrapper{
+        position: sticky;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 2.5rem 5rem;
+        width: 100vw;
+        background: $whity;
+        overflow: hidden;
+        box-shadow: 1px 0 15px rgba(0, 0, 0, 0.555);
+        @media(max-width:1150px){
+            padding: 2rem 0;
+        }
+    }
+    
+    &__block{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: $whity;
+        margin: 2rem;
+        box-shadow: -3px -1px 10px rgba(0, 0, 0, 0.376);
+        border-radius: 10px;
+        padding: 1.5rem 1rem;
+        width: 450px;
+        @media(max-width:950px){
+            margin: 0;
+            border-radius: unset;
+            box-shadow: unset;
+            padding: 1rem;
+        }
+        @media(max-width:720px){
+            flex-wrap: wrap;
+        }
+    }
+}

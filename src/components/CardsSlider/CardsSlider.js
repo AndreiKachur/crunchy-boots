@@ -1,81 +1,77 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from 'react-redux'
 import Slider from "react-slick";
-import WithBootsService from '../Hoc';
-import Button from "../Button";
+import { WithBootsService } from '../Hoc';
+import Spinner from '../Spinner'
 import * as actions from '../../actions/actions.js'
+import Card from "../Card";
+import ImageSlider from "../ImageSlider";
+
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import './CardsSlider.scss';
 
-class ImageSlider extends Component {
+function CardsSlider({ boots, loading, changeCart, addSize,
+    ordered, browsePics, picsSlider, picId }) {
 
-    render() {
-        const { boots, loading, changeCart:addToCart } = this.props;
+    if (loading) return <Spinner />
 
-        if (loading) return <h2 style={{ margin: '5rem' }}>Loading...</h2>
-
-        const settings = {
-            dots: true,
-            infinite: true,
-            draggable: true,
-            // autoplaySpeed: 5000,
-            // autoplay: true,
-            responsive: [
-                // {
-                //   breakpoint: 1000,
-                //   settings: {
-                //     slidesToShow: 2,
-                    // slidesToScroll: 3,
-                    // infinite: true,
-                    // dots: true
-                //   }
-                // },
-                {
-                  breakpoint: 790,
-                  settings: {
-                    slidesToShow: 1,
-                    // initialSlide: 2
-                  }
+    const settings = {
+        dots: true,
+        infinite: true,
+        draggable: true,
+        // autoplaySpeed: 10000,
+        // autoplay: true,
+        responsive: [
+            {
+                breakpoint: 1100,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    dots: false
                 }
-            ],
-            speed: 500,
-            slidesToShow: 2,
-            slidesToScroll: 1,
-        };
-        return (
-            <div>
+            },
+            {
+                breakpoint: 790,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: false
+                }
+            }
+        ],
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 2,
+    };
+    return (
+        <>
+            <ImageSlider
+                item={boots[picId]}
+                browsePics={browsePics}
+                picsSlider={picsSlider}
+            />
+            <div className='slider-wrapper'>
                 <Slider {...settings} className='slick-list'>
-                    {boots.map(item => {
-                        const { title, price, url, id } = item
-
-                        return (
-                            <div className='slider-card'
-                                key={id}>
-                                <img className='slider-card__img' src={url} alt={title} />
-                                <div className='slider-card__column'>
-                                    <div className='slider-card__text'>
-                                        <li>{title}</li>
-                                        <li>Price: {price}$</li>
-                                    </div>
-                                    <button
-                                        className='slider-card__btn'
-                                        onClick={() => addToCart(id)}>
-                                        Add To Cart
-                                    </button>
-                                </div>
-                            </div>
-                        )
-                    })}
-
+                    {boots.map(item => <Card
+                        key={item.id}
+                        item={item}
+                        ordered={ordered}
+                        browseImgs={() => browsePics(item.id - 1)}
+                        addToCart={(actualRest) => changeCart(item.id, item.idSize, actualRest)}
+                        addSize={(size) => addSize(size, item.id)}
+                    />)}
                 </Slider>
             </div >
-        );
-    }
+        </>
+    );
 }
 
 const mapStateToProps = (state) => ({
     boots: state.boots,
-    loading: state.loading
+    loading: state.loading,
+    ordered: state.ordered,
+    picsSlider: state.picsSlider,
+    picId: state.picId
 })
-export default WithBootsService()(connect(mapStateToProps, actions)(ImageSlider))
+export default WithBootsService()(connect(mapStateToProps, actions)(CardsSlider))

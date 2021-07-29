@@ -3,14 +3,18 @@ const initialState = {
     loading: true,
     error: false,
     cart: [],
+    ordered: false,
+    picsSlider: false,
+    picId: 0
 }
 
 const reducer = (state = initialState, actions) => {
-    const { cart, boots } = state
-    const id = actions.payload
+
+    const { cart, boots, ordered } = state
+    let id = actions.id
     const idSize = actions.idSize
     const idx = cart.findIndex(el => el.idSize === idSize)
-    let newBoots = []
+    let newBoots, newBoot = []
     let newItem = {}
 
     switch (actions.type) {
@@ -18,31 +22,33 @@ const reducer = (state = initialState, actions) => {
             return {
                 ...state,
                 boots: actions.payload,
-                loading: false
+                loading: false,
             }
         case 'BOOTS_REQUESTED':
             return {
                 ...state,
-                loading: true
+                loading: true,
             }
         case 'CHANGE_CART':
-            
-            if(idSize === 0) return state
 
-            let addedYet = Boolean(cart.find(el => el.idSize === idSize))
-            //check rest of amount
-            const newBoot = boots[id - 1]
+            if (idSize === 0 || ordered) return state
+
+            const addedYet = Boolean(cart.find(el => el.idSize === idSize))
+
+            newBoot = boots[id - 1]
+
             const newBootEl = newBoot.sizes.find(el => el.id === idSize)
 
-            if(newBootEl.maxRest === undefined) newBootEl.maxRest = newBootEl.rest
-
+            if (newBootEl.maxRest === undefined) {
+                newBootEl.maxRest = newBootEl.rest
+            }
             newBootEl.rest = newBootEl.rest - actions.number
 
             if (actions.cartButton && newBootEl.rest < 1) {
                 newBootEl.rest = 1
                 return state
             }
-            if (newBootEl.rest < 0) {
+            if (newBootEl.rest < 0 || actions.actualRest === 0) {
                 newBootEl.rest = 0
                 return state
             }
@@ -84,13 +90,26 @@ const reducer = (state = initialState, actions) => {
             }
         case 'DELETE_FROM_CART':
 
-            const newCart = [...cart.slice(0, idx), ...cart.slice(idx + 1)]
-            console.log(newCart)
+            newBoot = boots.find(el => {
+                let res = false
+                el.sizes.forEach(el => {
+                    if (el.id === idSize) {
+                        return res = true
+                    }
+                })
+                return res
+            })
+            const newBootSize = newBoot.sizes.find(el => el.id === idSize)
+            newBootSize.rest = newBootSize.maxRest
+            idSize > 999 ?
+                id = +('' + idSize).slice(0, 2) :
+                id = +('' + idSize).slice(0, 1)
+
             return {
                 ...state,
-                cart: newCart
+                cart: [...cart.slice(0, idx), ...cart.slice(idx + 1)],
+                boots: [...boots.slice(0, id - 1), newBoot, ...boots.slice(id)]
             }
-
         case 'CHECK_SIZE':
             const itemId = actions.itemId
             newItem = boots[itemId - 1]
@@ -103,7 +122,17 @@ const reducer = (state = initialState, actions) => {
                     newItem,
                 ...boots.slice(itemId)]
             }
-
+        case 'PLACE_ORDER':
+            return {
+                ...state,
+                ordered: true
+            }
+        case 'BROWSE_PICS':
+            return {
+                ...state,
+                picsSlider: !state.picsSlider,
+                picId: id
+            }
         default: return state
     }
 }

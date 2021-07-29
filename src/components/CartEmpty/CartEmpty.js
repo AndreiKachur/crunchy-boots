@@ -6,7 +6,7 @@ import './CartEmpty.scss'
 function Cart() {
     return (
         <>
-            <div className='cart-empty'>
+            <div className='cart-full cart-empty'>
                 <img src={EmptyCart} alt='cart-empty' />
                 <div className='cart-empty__text'>
                     <h3>It seems, you haven't choosen anything.</h3>

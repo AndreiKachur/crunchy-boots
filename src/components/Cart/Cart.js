@@ -1,12 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../../actions/actions.js'
 import CartEmpty from '../CartEmpty'
 import CartItem from '../CartItem'
+import Form from '../Form/Form'
 import './Cart.scss';
 
-function Cart({ cart, onDelete, changeCart }) {
+function Cart({ cart, onDelete, ordered }) {
+
+    const [openForm, setOpenForm] = useState(false)
+
+
+    useEffect(() => {
+        document.addEventListener("keydown", showForm);
+        return () => {
+            document.removeEventListener("keydown", showForm);
+        }
+    })
+
+    const showForm = (e) => {
+        if (e.key === 'Escape' || e.type === 'click') {
+            setOpenForm(!openForm)
+        }
+    }
+    if (ordered) return <Form />
     if (cart.length === 0) { return <CartEmpty /> }
+    if (openForm) {
+        return (
+            <>
+                <div className='modal' onClick={showForm}>
+                </div>
+                <Form showForm={showForm} />
+            </>
+        )
+    }
     return (
         <>
             <div className='cart-wrapper'>
@@ -16,15 +43,19 @@ function Cart({ cart, onDelete, changeCart }) {
                             key={item.idSize}
                             item={item}
                             onDelete={() => onDelete(item.idSize)}
-                            addToCart={() => changeCart(item.id, item.idSize, true)}
-                            deleteFromCart={() => changeCart(item.id, item.idSize, true, -1)}
                         />
                     )
                 })}
+                <button className='cart-button' onClick={() => setOpenForm(!openForm)}>
+                    Place order
+                </button>
             </div>
 
         </>
     )
 }
-const mapStateToProps = state => ({ cart: state.cart })
+const mapStateToProps = state => ({
+    cart: state.cart,
+    ordered: state.ordered
+})
 export default connect(mapStateToProps, actions)(Cart)

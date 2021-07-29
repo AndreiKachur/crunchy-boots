@@ -1,17 +1,22 @@
 @import '../../variables.scss';
 
+.slider-wrapper{
+    width:99vw;
+    position: relative;
+    z-index: 100;
+}
 .slick{
-    &-list{
-    }
-    &-slider{
-        margin-bottom: 1.5rem;
-    }
     &-track{
-        padding-top: 3.5rem;
         background-color: $whity;
-        height: 98vh;
+        height: 87vh;
         & div{
             background-color: inherit;
+        }
+        @media (max-width:1100px){
+            height: 90vh;
+        }
+        @media (max-width:700px){
+            height: 95vh;
         }
         @media (max-height:520px){
             height: 125vh;
@@ -22,12 +27,9 @@
     }
     &-dots{
         z-index: 10;
-        background-color: $whity;
-        bottom: 0px;
+        bottom: 2vh;
         height:15px;
-        padding-bottom: 20px;
         & li button {
-            background: $whity;
             &::before{
                 line-height: 0;
                 font-size: 1.5rem;
@@ -38,75 +40,25 @@
         z-index: 10;
         background: none;
     }
+    &-prev, &-next{
+        position: absolute;
+        top:40%;
+    }
     &-prev{
         left: 1rem;
+        @media (max-width:520px){
+            left: .5rem;
+        }
     }
     &-next{
         right: 3rem;
+        @media (max-width:520px){
+            right: 2.8rem;
+        }
     }
     &-prev::before,
     &-next::before{
         font-size: 3rem;
         color:rgba(78, 78, 78, 0.5);
     }
-    &-slide{
-        background-color: $whity;
-        height: 98%;
-        overflow:hidden;
-    }
-}
-
-.slider-card{
-    border-top: 1px solid rgb(199, 199, 199);
-    border-left: 1px solid rgb(199, 199, 199);
-    border-bottom: 1px solid rgb(199, 199, 199);
-    font-weight: 700;
-    display: block;
-
-    &__column{
-        display: flex;
-    }
-    &__btn{
-        width: 200px;
-        background-color: $pink;
-        color:$whity;
-        font-size: 1.3rem;
-        font-weight: 700;
-        padding: 12px;
-        border: none;
-        &:hover{
-            background-color: $darkest-pink;
-        }
-        &:active{
-            background-color: $pink;
-        }
-    }
-
-    &__img{
-        width: 100%;
-        height: 60vh;
-        object-fit: cover;
-        object-position: center;
-        // padding: 0px 0px 10px;
-        background: $whity;
-    }
-    &__text{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        height: 150px;
-        color: rgb(70, 70, 70);
-        width:100%;
-        padding: 0px 30px;
-        & li{
-            padding: 3px 0px;
-            list-style: none;
-            font-size: 1.5rem;
-        }
-        @media(max-height:600px){
-            height: 120px;
-        }
-    }
-
 }

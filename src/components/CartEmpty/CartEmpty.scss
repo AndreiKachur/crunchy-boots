@@ -6,21 +6,19 @@
     justify-content: center;
     align-items: center;
     width: 100vw;
-    padding: 15vh 0;
     & a{
         text-decoration: none;
     }
     & img{
         height: 260px;
-        // max-width:200px;
         padding-bottom: 3rem;
     }
     &__text{
         max-width:200px;
         display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         & h3{
             text-align: center;
             color: $pink;
@@ -34,8 +32,9 @@
         margin: 1rem;
         font-weight: 900;
         text-transform: uppercase;
-        border: 2px solid $whity;
+        border: 2px solid $pink;
         border-radius: .7rem;
+        transition: 0.3s;
         &:hover{
             background-color: $whity;
             border: 2px solid $pink;
@@ -48,4 +47,9 @@
             border: 2px solid $pink;
         }
     }
+}
+
+.cart-full{
+    height: 85vh;
+    background: $whity;
 }

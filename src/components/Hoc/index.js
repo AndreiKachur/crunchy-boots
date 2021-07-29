@@ -1,3 +1,9 @@
-import WithBootsService from './With-boots-service';
+import WithBootsService from './WithBootsService';
+import WithSize from './WithSize';
+import WithPopOver from './WithPopOver';
 
-export default WithBootsService;
+export {
+    WithBootsService,
+    WithSize,
+    WithPopOver,
+}

@@ -1,0 +1,52 @@
+@import '../../variables';
+
+.item-btn{
+    
+    &-wrapper{
+        position: absolute;
+        bottom: 15px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    z-index: 10;
+    background-color: $pink;
+    color:$whity;
+    font-size: 1rem;
+    font-weight: 700;
+    width: 100%;
+    margin: 0 10px;
+    padding: 10px 8px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: -2px -1px 10px rgba(0, 0, 0, 0.137);
+    transition: 0.4s;
+    &:hover{
+        background-color: $whity;
+        color:$pink;
+        border: 1px solid $pink;
+    }
+    &:active{
+        background-color: $pink;
+        color: $whity;
+        border: 1px solid $pink;
+    }
+    &__pop-over{
+        position: absolute;
+        background-color: #464646;
+        color:$whity;
+        width: 200px;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: center;
+        opacity: .9;
+        bottom: 45px;
+        transition: 0.6s;
+        transform: translateY(0%);
+    
+        &_hidden{
+            opacity: 0;
+            transform: translateY(40px);
+        }
+    }
+}

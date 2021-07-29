@@ -17,8 +17,9 @@
     overflow: hidden;
     font-size: 2rem;
     font-weight: 900;
-    @media (max-width:600px){
+    @media (max-width:800px){
         border-radius: 0px;
+        height: 130px;
     }
     &:hover{
         // border: 2px solid $pink;
@@ -32,20 +33,40 @@
         height: 100%;
         object-fit: cover;
         object-position: bottom;
+        @media (max-width:420px){
+            width:90px;
+        }
     }
     &__title{
-        
         padding: 0 3rem;
+        @media (max-width:600px){
+            width: 180px;
+            padding: 0 0rem 0 .5rem;
+        }
+        @media (max-width:420px){
+            font-size: 1.4rem;
+            line-height: 1.4rem;
+            width: 130px;
+        }
+        @media (max-width:300px){
+            width:90px;
+            font-size: 1rem;
+        }
     }
     &__price{
         position: absolute;
         display: flex;
         align-items: center;
-        justify-content: start;
-        right: 0;
-        width: 120px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        right: 60px;
+        width: 100px;
         height: 100%;
-        // border: inherit;
+        @media (max-width:420px){
+            width:100px;
+            font-size: 1.5rem;
+            
+        }
     }
     &__actions{
         position: absolute;
@@ -67,33 +88,59 @@
         }
         
     }
-    &__change{
-        position: absolute;
-        display: flex;
-        align-items: center;
-        right: 140px;
-        height: 100%;
-        font-size: 2rem;
-        &>*:hover{
-            font-size: 3rem;
-            color:$darkest-pink;
-            cursor: pointer;
-        }
-        &>*:active{
-            color:$pink;
-            font-size: 2.5rem;
-        }
-    }
+    // &__change{
+    //     position: absolute;
+    //     display: flex;
+    //     align-items: center;
+    //     right: 140px;
+    //     font-size: 2rem;
+    //     &>*:hover{
+    //         font-size: 3rem;
+    //         color:$darkest-pink;
+    //         cursor: pointer;
+    //     }
+    //     &>*:active{
+    //         color:$pink;
+    //         font-size: 2.5rem;
+    //     }
+    //     @media (max-width:600px){
+    //         top:6.5rem;
+    //         right:60px;
+    //         font-size: 1.5rem;
+    //         z-index: 300;
+    //         &>*:hover{
+    //             font-size: 1.7rem;
+    //             color:$darkest-pink;
+    //             cursor: pointer;
+    //         }
+    //         &>*:active{
+    //             color:$pink;
+    //             font-size: 1.6rem;
+                
+    //         }
+    //     }
+    // }
     &__pieces{
         position: absolute;
         font-size: 1rem;
         bottom: .5rem;
         right: .8rem;
+        @media (max-width:600px){
+            // font-size: .8rem;
+            right: .8rem;
+            
+        }
     }
     &__size{
         position: absolute;
         font-size: 1rem;
         bottom: .5rem;
         left: 10.5rem;
+        @media (max-width:600px){
+            left: unset;
+            top: .3rem;
+            right: .8rem;
+            // font-size: .8rem;
+        }
     }
 }

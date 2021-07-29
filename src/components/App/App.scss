@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,700;0,900;1,400&display=swap');
+@import '../../variables.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+body{
+    background: $grey;
+    overflow-x: hidden;
+}
+html{
+    font-size: 15;
+    scroll-behavior: smooth;
+}
+

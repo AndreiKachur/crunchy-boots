@@ -1,0 +1,63 @@
+@import '../../variables.scss';
+
+.browse-pics{
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background: $whity;
+    z-index:102;
+    width: 600px;
+    height: 594px;
+    border-radius: 20px;
+    overflow: hidden;
+    @media (max-width:1200px){
+        width: 50vw;
+        height: 50vw;
+    }
+    @media (max-width:900px){
+        width: 65vw;
+        height: 65vw;
+    }
+    @media (max-width:600px){
+        width: 90vw;
+        height: 90vw;
+    }
+
+    & button.slick-prev, button.slick-next{
+        position:fixed;
+        top:50%;
+    }
+    &__img{
+        transition: 0.5s all;
+        object-fit: cover;
+        transform-origin: center;
+        &:hover{
+            transform: scale(1.15);
+        }
+    }
+    &__modal{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index:101;
+        background: rgba(10, 10, 10, 0.45);
+        overflow: hidden;
+        width:100%;
+        height: 100%;
+    }
+    &_hidden{
+        display:none
+    }
+    &__close-btn {
+        position: absolute;
+        z-index: 104;
+        top: .5%;
+        right: 3%;
+        height: 15px;
+        font-size: 2.5rem;
+        color: rgba(70, 70, 70, 0.644);
+        cursor: pointer;
+      }
+}
+

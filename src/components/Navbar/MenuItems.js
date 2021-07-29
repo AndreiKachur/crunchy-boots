@@ -13,10 +13,5 @@ export const MenuItems = [
         title: 'Contacts',
         url: '/contacts',
         cName: 'nav__list-item-links'
-    },
-    {
-        title: 'Video',
-        url: '/video',
-        cName: 'nav__list-item-links nav__video'
     }
 ]

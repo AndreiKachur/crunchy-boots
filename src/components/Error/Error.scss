@@ -1,0 +1,16 @@
+@import '../../variables.scss';
+
+.error{
+    &__wrapper{
+    width:100vw;
+    height: 100vh;
+    background: $grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    &__img{
+        object-fit: cover;
+        max-width:100%;
+    }
+}

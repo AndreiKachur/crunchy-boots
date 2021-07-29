@@ -1,0 +1,40 @@
+@import '../../variables';
+
+.filter-btn{
+    z-index: 10;
+    background-color: $pink;
+    color:$whity;
+    font-size: 1rem;
+    font-weight: 700;
+    width: 100%;
+    margin: 0 10px;
+    padding: 10px 8px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: -3px -1px 10px rgba(0, 0, 0, 0.315);
+    transition: 0.4s;
+    &:hover{
+        background-color: $whity;
+        color:$pink;
+        // border: 1px solid $pink;
+    }
+    &:active{
+        background-color: $pink;
+        color: $whity;
+        // border: 1px solid $pink;
+    }
+    &_checked{
+        background-color: $blue;
+
+        &:hover{
+            background-color: $whity;
+            color:$blue;
+            // border: 1px solid $pink;
+        }
+        &:active{
+            background-color: $blue;
+            color: $whity;
+            // border: 1px solid $pink;
+        }
+    }
+}

@@ -1,0 +1,167 @@
+@import '../../variables';
+
+.slider-card{
+    border-top: 1px solid rgb(199, 199, 199);
+    border-left: 1px solid rgb(199, 199, 199);
+    border-bottom: 1px solid rgb(199, 199, 199);
+    font-weight: 700;
+    display: block;
+    position: relative;
+
+    &__pop-over{
+        position: absolute;
+        background-color: #464646 !important;
+        text-align: center;
+        color:$whity;
+        width: 250px;
+        font-size: 1.2rem;
+        padding: 15px;
+        border-radius: 4px;
+        opacity: .9;
+        bottom: 160px;
+        right:50%;
+        transition: transform 0.6s, opacity 0.8s;
+        transform: translate(50%, 0%);
+        z-index:0;
+        
+        &_hidden{
+            opacity: 0;
+            transform: translate(50%, 70px);
+        }
+    }
+
+    &__column{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__btn{
+        flex-basis: 25%;
+        width: 200px;
+        background-color: $pink;
+        color:$whity;
+        font-size: 1.3rem;
+        font-weight: 700;
+        padding: 12px;
+        border: none;
+        z-index: 15;
+        transition: 0.3s;
+        &:hover{
+            background-color: $darkest-pink;
+        }
+        &:active{
+            background-color: $pink;
+        }
+    }
+    &__img-wrapper{
+        height: 57vh;
+        overflow: hidden;
+        @media(max-width:1100px){
+            height: 65vh;
+        }
+    }
+    &__img{
+        width: 100%;
+        height: 57vh;
+        object-fit: cover;
+        background: $whity;
+        cursor: pointer;
+        transition: 0.5s all;
+        transform-origin: center;
+        &:hover{
+            transform: scale(1.25);
+        }
+        @media(max-width:1100px){
+            height: 65vh;
+        }
+    }
+    &__text{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        flex-basis: 60%;
+        height: 150px;
+        color: rgb(70, 70, 70);
+        max-width:500px;
+        padding: 0px 0px 0px 30px;
+        z-index:10;
+        & li{
+            padding: 3px 0px;
+            list-style: none;
+            font-size: 1.5rem;
+            @media(max-width:400px){
+                font-size: 1.3rem;
+            }
+        }
+        @media(max-height:600px){
+            height: 120px;
+        }
+    }
+    &__label{
+        position: absolute;
+        top:-1px;
+        left:-1px;
+        font-weight:700;
+        padding:.7rem;
+        border-bottom-right-radius: 15px;
+        color: $whity;
+        z-index:40;
+        
+        &_new{
+            background-color: $blue !important;
+        }
+        &_top{
+            background-color: $salad !important;
+            padding: .7rem .9rem;
+        }
+    }
+}
+
+.card{
+    &__sizes{
+        display: flex;
+        flex-wrap: wrap;
+        width:105px;
+        height: 150px;
+        overflow: hidden;
+        padding: 10px 5px;
+        z-index:10;
+        @media(max-width:1300px){
+            width: 120px;
+        }
+    }
+    &__size{
+        background-color: $whity;
+        color:rgb(70, 70, 70);
+        border: 1px solid rgb(70, 70, 70);
+        width: 40px;
+        height: 30px;
+        font-size: .8rem;
+        font-weight: 700;
+        margin: 1px;
+        transition: 0.4s;
+        @media (max-height:600px){
+            width: 30px;
+        }
+        @media(max-width:380px){
+            width:25px;
+        }
+
+        &:hover{
+            background-color: rgb(70, 70, 70);
+            color: $whity;
+        }
+        &:disabled{
+            background-color: $whity;
+            border: 1px solid $grey;
+            color: $grey;
+        }
+        &_checked{
+            background-color: rgb(70, 70, 70);
+            color: $whity;
+        }
+    }
+}
+
+
+

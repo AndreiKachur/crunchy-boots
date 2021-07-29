@@ -11,15 +11,31 @@
     font-size: 1rem;
     font-weight: 700;
     list-style: none;
+    box-shadow: -2px -1px 15px rgba(0, 0, 0, 0.185);
     @media(max-width:880px){
         max-width: 310px;
     }
-    
-    &__img{
-        width: 100%;
+    &__img-wrapper{
         height: 65%;
+        overflow: hidden;
+    }
+    &__img{
+        position: relative;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
+        cursor: pointer;
         object-position: bottom;
+        transform-origin: center;
+        z-index: 10;
+
+        &_hide:hover{
+            opacity: 0
+        }
+        &_bg{
+            transform: translateY(-102%);
+            z-index: 0;
+        }
     }
     &__columns{
         display: flex;
@@ -43,6 +59,7 @@
         font-size: .8rem;
         font-weight: 700;
         margin: 0 1px;
+        transition: 0.4s;
 
         &:hover{
             background-color: rgb(70, 70, 70);
@@ -56,6 +73,23 @@
         &_checked{
             background-color: rgb(70, 70, 70);
             color: $whity;
+        }
+    }
+
+    &__label{
+        position: absolute;
+        // width:3rem;
+        padding:.7rem;
+        border-bottom-right-radius: 15px;
+        color: $whity;
+        z-index:40;
+        
+        &_new{
+            background-color: $blue;
+        }
+        &_top{
+            background-color: $salad;
+            padding: .7rem .9rem;
         }
     }
 
