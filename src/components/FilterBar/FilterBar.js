@@ -27,6 +27,7 @@ function FilterBar({ onType, onSex, sex, type }) {
                                 'filter-btn'
                             return (
                                 <FilterButton
+                                    key={`FB-${item}`}
                                     clazz={clazz}
                                     title={item}
                                     onToggle={() => onSex(item)} />)
@@ -41,6 +42,7 @@ function FilterBar({ onType, onSex, sex, type }) {
                                 'filter-btn'
                             return (
                                 <FilterButton
+                                    key={`FB-${item}`}
                                     clazz={clazz}
                                     title={item}
                                     onToggle={() => onType(item)} />)

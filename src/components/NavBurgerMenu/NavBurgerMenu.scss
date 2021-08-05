@@ -62,6 +62,7 @@
 /* Position and sizing of burger button */
 .bm-burger-button {
     position: fixed;
+    z-index: 102 !important;
     width: 36px;
     height: 30px;
     left: 1rem;

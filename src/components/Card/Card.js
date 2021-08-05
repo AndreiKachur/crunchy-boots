@@ -29,7 +29,7 @@ function Card({ item, addToCart, actualRest, checked, sizesWithClass, chooseSize
                         <li>{sex}</li>
                         <li>Price: {price}$</li>
                     </div>
-                    <div className='card__sizes' onClick={(e) => console.log(e)}>
+                    <div className='card__sizes'>
                         {sizes.map((item, index) => {
                             return (
                                 <Size

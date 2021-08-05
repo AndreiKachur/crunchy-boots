@@ -6,7 +6,7 @@
     left:50%;
     transform: translate(-50%,-50%);
     background: $whity;
-    z-index:102;
+    z-index:105;
     width: 600px;
     height: 594px;
     border-radius: 20px;
@@ -40,7 +40,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        z-index:101;
+        z-index:103;
         background: rgba(10, 10, 10, 0.45);
         overflow: hidden;
         width:100%;
@@ -51,7 +51,7 @@
     }
     &__close-btn {
         position: absolute;
-        z-index: 104;
+        z-index: 106;
         top: .5%;
         right: 3%;
         height: 15px;

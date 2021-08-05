@@ -18,7 +18,7 @@ class ImageSlider extends Component {
     }
 
     render() {
-        const { item: { url, title }, picsSlider } = this.props
+        const { item: { id, url, title }, picsSlider } = this.props
 
         const hiddenClass = !picsSlider ? 'browse-pics_hidden' : ''
 
@@ -31,6 +31,7 @@ class ImageSlider extends Component {
                         {url.map((el, i) => {
                             return (
                                 <img className='browse-pics__img'
+                                    key={`${id}${i}`}
                                     src={el}
                                     alt={`${title} img${i}`} />
                             )
