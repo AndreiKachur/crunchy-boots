@@ -67,8 +67,8 @@ class ItemsList extends Component {
                                             addSize={(size) => addSize(size, item.id)}
                                         />
                                     )
-                                }
-                            }
+                                } else { return null }
+                            } else { return null }
                         })
                     }
                 </main>

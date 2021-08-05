@@ -23,7 +23,8 @@ ReactDOM.render(
         </BootsServiceContext.Provider>
       </ErrorBoundry>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
+  ,
   document.getElementById('root')
 );
 

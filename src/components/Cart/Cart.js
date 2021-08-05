@@ -10,7 +10,6 @@ function Cart({ cart, onDelete, ordered }) {
 
     const [openForm, setOpenForm] = useState(false)
 
-
     useEffect(() => {
         document.addEventListener("keydown", showForm);
         return () => {

@@ -18,6 +18,9 @@ const WithSize = (Wrapped, itemSizeClass, itemLabelClass) => {
             actualRest: 0,
             checked: false
         }
+        componentWillUnmount() {
+            this.setState({ checked: false })
+        }
 
         chooseSize = (i, rest) => {
             let newClasses = this.createClassesArray()
