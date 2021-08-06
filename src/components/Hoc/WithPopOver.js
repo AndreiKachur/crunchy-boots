@@ -10,7 +10,7 @@ const WithPopOver = (Wrapped) => {
         const [sizeChecked, setSizeChecked] = useState(false)
 
         useEffect(() => {
-            setSizeChecked(checked)
+            setSizeChecked(true)
             return () => setSizeChecked(false)
         }, [checked])
 
@@ -27,10 +27,10 @@ const WithPopOver = (Wrapped) => {
                 return onPopOver("Sorry, but there's nothing left. Choose another size.", 2600)
             }
             if (sizeChecked) {
-                onPopOver('Added to cart', 2400)
+                onPopOver('Added to cart', 1500)
                 addToCart()
             } else {
-                onPopOver('Please choose any size', 2400)
+                onPopOver('Please choose any size', 2000)
             }
         }
 

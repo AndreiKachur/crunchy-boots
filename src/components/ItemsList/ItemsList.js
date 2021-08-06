@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import Item from '../Item';
 import FilterBar from '../FilterBar';
@@ -8,73 +8,67 @@ import ImageSlider from "../ImageSlider";
 import Spinner from '../Spinner'
 import './ItemsList.scss'
 
-class ItemsList extends Component {
+function ItemsList({ Bootsservice, bootsLoaded, bootsRequested, boots,
+    loading, changeCart, addSize, ordered, browsePics, picsSlider, picId }) {
+    const [sex, setSex] = useState('all')
+    const [type, setType] = useState('all')
 
-    state = {
-        sex: `all`,
-        type: `all`,
-    }
-    componentDidMount() {
-        const { Bootsservice, bootsLoaded, bootsRequested, boots } = this.props
+    useEffect(() => {
         if (boots.length === 0) {
             bootsRequested();
             Bootsservice.getBootsItems()
                 .then(boots => bootsLoaded(boots))
         }
-    }
-    onSex = sex => sex === this.state.sex ?
-        this.setState({ sex: 'all' }) :
-        this.setState({ sex: sex })
-    onType = type => type === this.state.type ?
-        this.setState({ type: 'all' }) :
-        this.setState({ type: type })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-    render() {
-        const { boots, loading, changeCart, addSize,
-            ordered, browsePics, picsSlider, picId } = this.props;
-        const { sex, type } = this.state
+    const onSex = s => s === sex ?
+        setSex('all') : setSex(s)
 
-        if (loading) return <Spinner />
+    const onType = t => t === type ?
+        setType('all') : setType(t)
 
-        return (
-            <>
-                <ImageSlider
-                    item={boots[picId]}
-                    browsePics={browsePics}
-                    picsSlider={picsSlider}
-                />
-                <FilterBar
-                    {...this.state}
-                    onSex={sex => this.onSex(sex)}
-                    onType={type => this.onType(type)}
-                />
-                <main className='items-list'>
-                    {
-                        boots.map(item => {
-                            if (sex === item.sex.toLowerCase() || sex === 'all') {
-                                if (type === item.category.toLowerCase() ||
-                                    type === item.boost ||
-                                    type === 'all') {
-                                    return (
-                                        <Item
-                                            key={item.id}
-                                            item={item}
-                                            ordered={ordered}
-                                            browseImgs={() => browsePics(item.id - 1)}
-                                            addToCart={(actualRest) => {
-                                                changeCart(item.id, item.idSize, actualRest)
-                                            }}
-                                            addSize={(size) => addSize(size, item.id)}
-                                        />
-                                    )
-                                } else { return null }
+    if (loading) return <Spinner />
+
+    return (
+        <>
+            <ImageSlider
+                item={boots[picId]}
+                browsePics={browsePics}
+                picsSlider={picsSlider}
+            />
+            <FilterBar
+                sex={sex}
+                type={type}
+                onSex={s => onSex(s)}
+                onType={t => onType(t)}
+            />
+            <main className='items-list'>
+                {
+                    boots.map(item => {
+                        if (sex === item.sex.toLowerCase() || sex === 'all') {
+                            if (type === item.category.toLowerCase() ||
+                                type === item.boost ||
+                                type === 'all') {
+                                return (
+                                    <Item
+                                        key={item.id}
+                                        item={item}
+                                        ordered={ordered}
+                                        browseImgs={() => browsePics(item.id - 1)}
+                                        addToCart={(actualRest) => {
+                                            changeCart(item.id, item.idSize, actualRest)
+                                        }}
+                                        addSize={(size) => addSize(size, item.id)}
+                                    />
+                                )
                             } else { return null }
-                        })
-                    }
-                </main>
-            </>
-        )
-    }
+                        } else { return null }
+                    })
+                }
+            </main>
+        </>
+    )
 }
 
 
