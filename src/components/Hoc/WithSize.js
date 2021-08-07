@@ -38,21 +38,18 @@ const WithSize = (Wrapped, itemSizeClass, itemLabelClass) => {
             return actualRest
         }
 
-        useEffect(() => {
-            return () => setChecked(false)
-        })
+        useEffect(() => () => setChecked(false), [])
 
-        const collectionLabel = newCollection === 'NEW' ?
-            <div className={`${itemLabelClass} ${itemLabelClass}_new`
-            } >
-                {newCollection}
-            </div >
-            : null
-        const topLabel = topseller === 'TOP' ?
-            <div className={`${itemLabelClass} ${itemLabelClass}_top`}>
-                {topseller}
-            </div>
-            : null
+        const addLabel = (clazzName, data, label) => {
+            return data === label ?
+                <div className={`${clazzName} ${clazzName}_${label.toLowerCase()}`} >
+                    {data}
+                </div > :
+                null
+        }
+
+        const newLabel = addLabel(itemLabelClass, newCollection, 'NEW')
+        const topLabel = addLabel(itemLabelClass, topseller, 'TOP')
 
         return (
             <Wrapped
@@ -62,7 +59,7 @@ const WithSize = (Wrapped, itemSizeClass, itemLabelClass) => {
                 checked={checked}
                 chooseSize={chooseSize}
                 changeActualRest={changeActualRest}
-                collectionLabel={collectionLabel}
+                collectionLabel={newLabel}
                 topLabel={topLabel} />
         )
     }

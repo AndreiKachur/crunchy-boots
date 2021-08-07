@@ -10,7 +10,7 @@ import './ItemsList.scss'
 
 function ItemsList({ Bootsservice, bootsLoaded, bootsRequested, boots,
     loading, changeCart, addSize, ordered, browsePics, picsSlider, picId }) {
-    const [sex, setSex] = useState('all')
+    const [gender, setGender] = useState('all')
     const [type, setType] = useState('all')
 
     useEffect(() => {
@@ -22,11 +22,12 @@ function ItemsList({ Bootsservice, bootsLoaded, bootsRequested, boots,
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const onSex = s => s === sex ?
-        setSex('all') : setSex(s)
+    const onFilter = (filterOption, type) => {
+        const setFunc = type === 'gender' ? setGender : setType
 
-    const onType = t => t === type ?
-        setType('all') : setType(t)
+        return filterOption === type
+            ? setFunc('all') : setFunc(filterOption)
+    }
 
     if (loading) return <Spinner />
 
@@ -38,15 +39,14 @@ function ItemsList({ Bootsservice, bootsLoaded, bootsRequested, boots,
                 picsSlider={picsSlider}
             />
             <FilterBar
-                sex={sex}
+                gender={gender}
                 type={type}
-                onSex={s => onSex(s)}
-                onType={t => onType(t)}
+                onFilter={(filterOption, type) => onFilter(filterOption, type)}
             />
             <main className='items-list'>
                 {
                     boots.map(item => {
-                        if (sex === item.sex.toLowerCase() || sex === 'all') {
+                        if (gender === item.gender.toLowerCase() || gender === 'all') {
                             if (type === item.category.toLowerCase() ||
                                 type === item.boost ||
                                 type === 'all') {

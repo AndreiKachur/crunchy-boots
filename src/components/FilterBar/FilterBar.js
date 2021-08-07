@@ -3,7 +3,7 @@ import FilterButton from '../FilterButton'
 import Fade from 'react-reveal/Fade';
 import './FilterBar.scss'
 
-function FilterBar({ onType, onSex, sex, type }) {
+function FilterBar({ onFilter, gender, type }) {
 
     const buttonTitles1 = [
         "male",
@@ -22,7 +22,7 @@ function FilterBar({ onType, onSex, sex, type }) {
                 <Fade bottom>
                     <div className='filter-bar__block'>
                         {buttonTitles1.map(item => {
-                            const clazz = item === sex ?
+                            const clazz = item === gender ?
                                 'filter-btn filter-btn_checked' :
                                 'filter-btn'
                             return (
@@ -30,7 +30,7 @@ function FilterBar({ onType, onSex, sex, type }) {
                                     key={`FB-${item}`}
                                     clazz={clazz}
                                     title={item}
-                                    onToggle={() => onSex(item)} />)
+                                    onToggle={() => onFilter(item, 'gender')} />)
                         })}
                     </div>
                 </Fade>
@@ -45,7 +45,7 @@ function FilterBar({ onType, onSex, sex, type }) {
                                     key={`FB-${item}`}
                                     clazz={clazz}
                                     title={item}
-                                    onToggle={() => onType(item)} />)
+                                    onToggle={() => onFilter(item, 'type')} />)
                         })}
                     </div>
                 </Fade>

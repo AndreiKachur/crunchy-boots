@@ -8,7 +8,7 @@ import './Card.scss';
 function Card({ item, addToCart, actualRest, checked, sizesWithClass, chooseSize,
     changeActualRest, collectionLabel, topLabel, ordered, browseImgs }) {
 
-    let { title, price, url, sizes, id, sex } = item;
+    let { title, price, url, sizes, id, gender } = item;
 
     return (
 
@@ -26,7 +26,7 @@ function Card({ item, addToCart, actualRest, checked, sizesWithClass, chooseSize
                 <div className='slider-card__column'>
                     <div className='slider-card__text'>
                         <li>{title}</li>
-                        <li>{sex}</li>
+                        <li>{gender}</li>
                         <li>Price: {price}$</li>
                     </div>
                     <div className='card__sizes'>

@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BootsServiceContext from '../Boots-service-context';
 
-const WithBootsService = () => (Wrapped) => (props) => {
-    return (
-        <BootsServiceContext.Consumer>
-            {(bootsservice) => <Wrapped {...props} Bootsservice={bootsservice} />}
-        </BootsServiceContext.Consumer>
-    );
-};
+const WithBootsService = () => (Wrapped) => {
+    return function With(props) {
+        const bootsservice = useContext(BootsServiceContext)
+        return <Wrapped {...props} Bootsservice={bootsservice} />
+    };
+}
 
 export default WithBootsService;

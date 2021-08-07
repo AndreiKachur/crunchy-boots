@@ -10,7 +10,7 @@ function Item({
     item, addToCart, actualRest, checked, sizesWithClass, chooseSize,
     changeActualRest, collectionLabel, topLabel, ordered, browseImgs
 }) {
-    let { title, price, url, category, sex, sizes } = item;
+    let { title, price, url, category, gender, sizes } = item;
 
     return (
         <>
@@ -27,7 +27,7 @@ function Item({
                             <div className='item__text'>
                                 <li>{title}</li>
                                 <li>Category: {category}</li>
-                                <li>Sex: {sex}</li>
+                                <li>Gender: {gender}</li>
                                 <li>Price: {price}$</li>
                             </div>
                             <div className='item__sizes'>
