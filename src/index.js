@@ -13,7 +13,7 @@ const store = createStore(reducer)
 const bootsservice = new Bootsservice()
 
 ReactDOM.render(
-  // <React.StrictMode>
+
   <Provider store={store} >
     <ErrorBoundry>
       <BootsServiceContext.Provider value={bootsservice}>
@@ -22,9 +22,8 @@ ReactDOM.render(
         </Router>
       </BootsServiceContext.Provider>
     </ErrorBoundry>
-  </Provider>
-  // </React.StrictMode>
-  ,
+  </Provider>,
+
   document.getElementById('root')
 );
 
