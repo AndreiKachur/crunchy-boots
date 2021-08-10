@@ -1,6 +1,7 @@
 export default class BootsService {
 
-    _apiBase = 'http://localhost:3001'
+    _apiBase = ''
+    // _apiBase = 'http://localhost:3001'
 
     async getResourses(url) {
         const res = await fetch(`${this._apiBase}${url}`)
