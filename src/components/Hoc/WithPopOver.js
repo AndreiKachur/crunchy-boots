@@ -10,7 +10,7 @@ const WithPopOver = (Wrapped) => {
         const [sizeChecked, setSizeChecked] = useState(false)
 
         useEffect(() => {
-            setSizeChecked(true)
+            setSizeChecked(checked)
             return () => setSizeChecked(false)
         }, [checked])
 

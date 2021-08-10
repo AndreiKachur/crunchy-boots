@@ -37,7 +37,7 @@ const useForm = (callback, validate) => {
         callback();
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [errors]);
 
   return { handleChange, handleNumberChange, handleSubmit, values, errors };
 };
