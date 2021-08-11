@@ -1,5 +1,7 @@
 This Shoe Shop is demo-test app.  
-It is based on following:  
+You can watch demo version here: https://crunchy-boots.herokuapp.com/
+
+It is based on the following:  
   
 -React  
 -Redux  
@@ -15,7 +17,7 @@ react-spinners
 react-icons  
 react-phone-number-input  
   
-I used fake db.json, json-server, BEM-methodology  
+Also I used json-server, BEM-methodology.  
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
   
 To run project:  
@@ -23,10 +25,3 @@ To run project:
 npm install  
 npm run json-server  
 npm start  
-
-
-
-
-
-
-
