@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux'
-import { placeOrder } from '../../actions/actions.js';
+import { placeOrder } from '../../redux/actions/actions';
 import FormSignup from './FormSignup';
 import FormSuccess from './FormSuccess';
 import './Form.scss';

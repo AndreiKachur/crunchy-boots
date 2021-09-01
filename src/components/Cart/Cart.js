@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../../actions/actions.js'
+import * as actions from '../../redux/actions/actions'
 import CartEmpty from '../CartEmpty'
 import CartItem from '../CartItem'
 import Form from '../Form/Form'
@@ -54,7 +54,7 @@ function Cart({ cart, onDelete, ordered }) {
     )
 }
 const mapStateToProps = state => ({
-    cart: state.cart,
-    ordered: state.ordered
+    cart: state.load.cart,
+    ordered: state.load.ordered
 })
 export default connect(mapStateToProps, actions)(Cart)

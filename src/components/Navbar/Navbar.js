@@ -59,7 +59,7 @@ function Navbar({ cart, ordered }) {
     )
 }
 const mapStateToProps = state => ({
-    cart: state.cart,
-    ordered: state.ordered
+    cart: state.load.cart,
+    ordered: state.load.ordered
 })
 export default connect(mapStateToProps, {})(Navbar)
