@@ -1,6 +1,8 @@
 
 This is a responsive shoe store app.  
-You can watch demo version here: https://crunchyboots.herokuapp.com/
+You can watch demo version here: https://crunchyboots.herokuapp.com/  
+   
+[![Demo-preview](https://github.com/AndreiKachur/crunchy-boots/blob/master/public/assets/demo.gif)](https://crunchyboots.herokuapp.com)
 
 It is based on the following:  
 
