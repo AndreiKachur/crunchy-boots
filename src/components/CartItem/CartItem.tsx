@@ -1,8 +1,7 @@
-import React from 'react'
 import { RiDeleteBin2Line } from 'react-icons/ri'
 import './CartItem.scss';
 
-function CartItem({ item, onDelete }) {
+function CartItem({ item, onDelete }: any) {
     const { title, price, url, amount, actualSize } = item;
     const pieces = amount > 1 ? `${price}*${amount} items` : '1 item'
     const itemSum = amount > 1 ? `${price * amount}` : price

@@ -8,10 +8,10 @@ import { useTypedSelector } from '../../redux/reducers'
 import './Form.scss';
 
 interface PropTypes {
-  showForm: (e: any) => void
+  closeForm: (e: any) => void
 }
 
-const Form = ({ showForm }: PropTypes) => {
+const Form = ({ closeForm }: PropTypes) => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { ordered } = useTypedSelector((s: ReducerStateTypes) => s.load)
@@ -28,7 +28,7 @@ const Form = ({ showForm }: PropTypes) => {
 
         {ordered ? null
           : <span className='close-btn'
-            onClick={showForm}>×</span>}
+            onClick={closeForm}>×</span>}
 
         <div className='form-content-left'>
           <img className='form-img' src='img/img-2.svg' alt='spaceship' />
