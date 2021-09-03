@@ -1,8 +1,6 @@
-import React from 'react'
 import ItemButton from '../ItemButton';
 import { WithSize } from '../Hoc'
 import { SizeType } from '../../types/db-types'
-// import Fade from 'react-reveal/Fade';
 import Size from '../Size';
 import './Item.scss';
 
@@ -14,8 +12,6 @@ const Item = ({
 
     return (
         <>
-            {/* <Fade bottom>
-                <Fade bottom cascade> */}
             <div className='item'>
                 {collectionLabel}
                 {topLabel}
@@ -50,8 +46,6 @@ const Item = ({
                     ordered={ordered}
                 />
             </div>
-            {/* </Fade>
-            </Fade> */}
 
         </>
     )

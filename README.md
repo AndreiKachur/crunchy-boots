@@ -15,16 +15,11 @@ Third-party Services:
   
 react-burger-menu  
 slick-carousel  
-react-reveal  
 react-scroll-up  
 react-scroll-to-top  
 react-spinners  
 react-icons  
 react-phone-number-input  
-
-*-App has been migrating to TypeScript.  
-As result some third-party services could work unproperly. 
-But it will be fixed pretty soon.     
 
 Besides I used json-server, BEM-methodology, Redux-Thunk.  
 This project was bootstrapped with [Create React App]  

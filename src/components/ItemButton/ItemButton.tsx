@@ -1,7 +1,5 @@
-import React from 'react';
 import './ItemButton.scss';
 import { WithPopOver } from '../Hoc';
-// import Fade from 'react-reveal/Fade';
 
 function ItemButton({ onCart, pop, text }: any) {
 
@@ -10,11 +8,11 @@ function ItemButton({ onCart, pop, text }: any) {
 
     return (
         <div className='item-btn-wrapper'>
-            {/* <Fade bottom> */}
+
             <button className='item-btn' onClick={onCart}>
                 Add To Cart
             </button>
-            {/* </Fade> */}
+
             <div className={itemClass}>
                 {text}
             </div>

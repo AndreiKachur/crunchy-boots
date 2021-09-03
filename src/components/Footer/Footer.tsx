@@ -1,6 +1,3 @@
-import React from 'react'
-// import Fade from 'react-reveal/Fade';
-
 import './Footer.scss'
 import { FaRegCopyright } from 'react-icons/fa';
 
@@ -20,7 +17,6 @@ function Footer() {
     return (
         <footer>
             <div className='footer'>
-                {/* <Fade bottom cascade> */}
                 <ul className='footer__contacts'>
                     <li className='footer__list-item'>
                         123456, London, Queen St.18
@@ -81,13 +77,10 @@ function Footer() {
                         <span>contactless</span>
                     </div>
                 </div>
-                {/* </Fade> */}
             </div>
             <div className='copyright'>
-                {/* <Fade bottom> */}
                 <FaRegCopyright className='copyright__logo' />
                 <span>2021, CRUNCHY BOOTS</span>
-                {/* </Fade> */}
             </div>
 
         </footer>

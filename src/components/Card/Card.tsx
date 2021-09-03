@@ -1,7 +1,6 @@
 import React from 'react'
 import Size from '../Size';
 import CardButton from './CardButton'
-// import Fade from 'react-reveal/Fade';
 import { WithSize } from '../Hoc'
 import { SizeType } from '../../types/db-types'
 import './Card.scss';
@@ -14,7 +13,6 @@ function Card({ item, addToCart, actualRest, checked, sizesWithClass, chooseSize
 
     return (
 
-        // <Fade bottom cascade>
         <div className='slider-card'
             key={id}>
             {collectionLabel}
@@ -52,7 +50,6 @@ function Card({ item, addToCart, actualRest, checked, sizesWithClass, chooseSize
                 />
             </div>
         </div>
-        // </Fade>
     )
 }
 
