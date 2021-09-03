@@ -1,13 +1,12 @@
-import React from 'react';
 import validate from './validateInfo';
 import PhoneInput from 'react-phone-number-input/input'
 import useForm from './useForm';
 import './Form.scss';
 import 'react-phone-number-input/style.css'
 
-const FormSignup = ({ submitForm }) => {
+const FormSignup = ({ submitForm }: any) => {
 
-  const { handleChange, handleSubmit, handleNumberChange, values, errors } = useForm(
+  const { handleChange, handleSubmit, handleNumberChange, values, errors }: any = useForm(
     submitForm,
     validate
   );
@@ -38,7 +37,7 @@ const FormSignup = ({ submitForm }) => {
             defaultCountry="RU"
             value={values.phoneNumber}
             onChange={handleNumberChange}
-            maxLength='17' />
+            maxLength={17} />
           {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
         </div>
         <div className='form-inputs'>
@@ -60,7 +59,7 @@ const FormSignup = ({ submitForm }) => {
             type='text'
             name='comment'
             placeholder='Enter your comment'
-            maxLength='60'
+            maxLength={60}
             value={values.comment}
             onChange={handleChange}
           />

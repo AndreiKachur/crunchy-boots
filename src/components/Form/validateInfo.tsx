@@ -1,5 +1,18 @@
-export default function validateInfo(values) {
-  let errors = {};
+interface ValuesTypes {
+  username: string,
+  email: string,
+  phoneNumber: string,
+  comment: string
+}
+export interface ErrorsTypes {
+  username?: string,
+  email?: string,
+  phoneNumber?: string,
+  comment?: string
+}
+
+export default function validateInfo(values: ValuesTypes) {
+  let errors: ErrorsTypes = {};
 
   if (!values.username.trim()) {
     errors.username = 'Username required';

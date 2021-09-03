@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useForm = (callback, validate) => {
+const useForm = (callback: any, validate: any) => {
   const [values, setValues] = useState({
     username: '',
     email: '',
@@ -10,13 +10,13 @@ const useForm = (callback, validate) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleNumberChange = number => {
+  const handleNumberChange = (number: string) => {
     setValues({
       ...values,
       phoneNumber: number
     });
   };
-  const handleChange = e => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setValues({
       ...values,
@@ -24,7 +24,7 @@ const useForm = (callback, validate) => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     setErrors(validate(values));

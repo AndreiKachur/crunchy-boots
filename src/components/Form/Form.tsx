@@ -16,8 +16,6 @@ const Form = ({ showForm }: PropTypes) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { ordered } = useTypedSelector((s: ReducerStateTypes) => s.load)
   const dispatch = useDispatch()
-  console.log(ordered);
-
 
   function submitForm() {
     setIsSubmitted(true);
