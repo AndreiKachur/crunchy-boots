@@ -15,7 +15,6 @@ Third-party Services:
   
 react-burger-menu  
 slick-carousel  
-react-scroll-up  
 react-scroll-to-top  
 react-spinners  
 react-icons  
