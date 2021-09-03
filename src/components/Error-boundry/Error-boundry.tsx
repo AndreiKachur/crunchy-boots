@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Error from '../Error';
 
 export default class ErrorBoundry extends Component {
