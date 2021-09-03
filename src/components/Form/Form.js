@@ -12,7 +12,7 @@ const Form = ({ showForm, placeOrder, ordered }) => {
     setIsSubmitted(true);
     placeOrder()
   }
-
+  console.log(ordered);
   return (
     <>
       <div className='form-container'>
@@ -30,6 +30,6 @@ const Form = ({ showForm, placeOrder, ordered }) => {
   );
 };
 
-const mapStateToProps = state => ({ ordered: state.ordered })
+const mapStateToProps = state => ({ ordered: state.load.ordered })
 
 export default connect(mapStateToProps, { placeOrder: placeOrder })(Form)
