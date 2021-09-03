@@ -12,7 +12,7 @@ const Form = ({ showForm, placeOrder, ordered }) => {
     setIsSubmitted(true);
     placeOrder()
   }
-  console.log(ordered);
+
   return (
     <>
       <div className='form-container'>

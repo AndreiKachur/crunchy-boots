@@ -1,17 +1,26 @@
-import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useTypedSelector } from '../../redux/reducers'
 import './Navbar.scss'
 
 import { SiCrunchbase } from 'react-icons/si';
 import { RiShoppingCartLine } from 'react-icons/ri';
 
-import { MenuItems } from './MenuItems.js'
+import { MenuItems } from './MenuItems'
 import NavBurgerMenu from '../NavBurgerMenu'
+import { State as ReducerStateTypes } from '../../redux/reducers'
+import { DbItem } from '../../types/db-types'
 
-function Navbar({ cart, ordered }) {
+interface PropTypes {
+    cart: DbItem[]
+    ordered: boolean
+}
 
-    const calculateSum = () => cart.reduce((acc, item) => acc + item.price * item.amount, 0)
+function Navbar() {
+
+    const { cart, ordered }: PropTypes = useTypedSelector((s: ReducerStateTypes) => s.load)
+
+    const calculateSum = () =>
+        cart.reduce((acc, item) => acc + item.price * (item.amount || 0), 0)
     const price = (ordered || cart.length === 0) ?
         <span className='nav__cart-price'>0$</span> :
         <span className='nav__cart-price'>{calculateSum()}$</span>
@@ -58,8 +67,5 @@ function Navbar({ cart, ordered }) {
         </>
     )
 }
-const mapStateToProps = state => ({
-    cart: state.load.cart,
-    ordered: state.load.ordered
-})
-export default connect(mapStateToProps, {})(Navbar)
+
+export default Navbar

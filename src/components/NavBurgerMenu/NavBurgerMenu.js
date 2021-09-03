@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { MenuItems } from '../Navbar/MenuItems.js'
+import { MenuItems } from '../Navbar/MenuItems'
 import { bubble as Menu } from 'react-burger-menu'
 
 import './NavBurgerMenu.scss'
