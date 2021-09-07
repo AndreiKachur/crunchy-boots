@@ -19,7 +19,7 @@ function App() {
 
   React.useEffect(() => {
     if (boots.length === 0) {
-      dispatch(fetchBoots('http://localhost:3001/boots/')) //('/boots/')
+      dispatch(fetchBoots('http://localhost:3000/boots/')) //('/boots/')
     }
   }, []) // eslint-disable-line
 
