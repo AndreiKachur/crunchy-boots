@@ -14,7 +14,6 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 const PORT = process.env.PORT || config.get('port')
-const PASS = config.get('pass')
 
 app.get('/boots', async (req, res) => {
     const boots = await Boots.find()
@@ -23,9 +22,9 @@ app.get('/boots', async (req, res) => {
 
 async function start() {
     try {
-        const url = `mongodb+srv://Andrei_K:${PASS}@cluster0.m7wkh.mongodb.net/Crunchy_Boots`
-        await mongoose.connect(url, {
-            useNewUrlParser: true
+        await mongoose.connect(config.get('uri'), {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
         })
 
         app.listen(PORT, () => {
