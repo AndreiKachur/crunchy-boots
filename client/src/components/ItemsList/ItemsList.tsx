@@ -19,11 +19,18 @@ const ItemsList: React.FC = () => {
     const { load: { boots, loading, ordered },
         pics: { picId, picsSlider } } = useTypedSelector(s => s)
 
-    const onFilter = (filterOption: string, type: string) => {
+    const onFilter = (filterOption: string, argType: string) => {
+        let setFunc, stateType
 
-        const setFunc = type === 'gender' ? setGender : setType
+        if (argType === 'gender') {
+            setFunc = setGender
+            stateType = gender
+        } else {
+            setFunc = setType
+            stateType = type
+        }
 
-        filterOption === type
+        filterOption === stateType
             ? setFunc('all') : setFunc(filterOption)
     }
 
