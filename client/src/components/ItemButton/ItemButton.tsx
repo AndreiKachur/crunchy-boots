@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import './ItemButton.scss';
 import { WithPopOver } from '../Hoc';
 
@@ -9,9 +10,11 @@ function ItemButton({ onCart, pop, text }: any) {
     return (
         <div className='item-btn-wrapper'>
 
-            <button className='item-btn' onClick={onCart}>
-                Add To Cart
-            </button>
+            <Fade direction='up' style={{ width: '90%', zIndex: 9 }} triggerOnce >
+                <button className='item-btn' onClick={onCart}>
+                    Add To Cart
+                </button>
+            </Fade>
 
             <div className={itemClass}>
                 {text}

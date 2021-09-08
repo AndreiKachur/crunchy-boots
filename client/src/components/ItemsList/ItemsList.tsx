@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../redux/reducers'
+import { Fade } from "react-awesome-reveal";
 import Item from '../Item';
 import FilterBar from '../FilterBar';
 import { changeCart, addSize, browsePics } from '../../redux/actions/actions'
@@ -35,7 +36,6 @@ const ItemsList: React.FC = () => {
     }
 
     if (loading) return <Spinner />
-
     return (
         <>
             <ImageSlider
@@ -49,28 +49,30 @@ const ItemsList: React.FC = () => {
                 onFilter={(filterOption, type) => onFilter(filterOption, type)}
             />
             <main className='items-list'>
-                {
-                    boots.map((item: DbItem) => {
-                        if (gender === item.gender.toLowerCase() || gender === 'all') {
-                            if (type === item.category.toLowerCase() ||
-                                type === item.boost ||
-                                type === 'all') {
-                                return (
-                                    <Item
-                                        key={item.id}
-                                        item={item}
-                                        ordered={ordered}
-                                        browseImgs={() => dispatch(browsePics(item.id - 1))}
-                                        addToCart={(actualRest: number) => {
-                                            dispatch(changeCart(item.id, item.idSize, actualRest))
-                                        }}
-                                        addSize={(size: number) => dispatch(addSize(size, item.id))}
-                                    />
-                                )
+                <Fade cascade direction='up' triggerOnce damping={0.04}>
+                    {
+                        boots.map((item: DbItem) => {
+                            if (gender === item.gender.toLowerCase() || gender === 'all') {
+                                if (type === item.category.toLowerCase() ||
+                                    type === item.boost ||
+                                    type === 'all') {
+                                    return (
+                                        <Item
+                                            key={item.id}
+                                            item={item}
+                                            ordered={ordered}
+                                            browseImgs={() => dispatch(browsePics(item.id - 1))}
+                                            addToCart={(actualRest: number) => {
+                                                dispatch(changeCart(item.id, item.idSize, actualRest))
+                                            }}
+                                            addSize={(size: number) => dispatch(addSize(size, item.id))}
+                                        />
+                                    )
+                                } else { return null }
                             } else { return null }
-                        } else { return null }
-                    })
-                }
+                        })
+                    }
+                </Fade>
             </main>
         </>
     )
