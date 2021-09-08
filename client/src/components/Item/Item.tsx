@@ -1,4 +1,5 @@
 import ItemButton from '../ItemButton';
+import { Fade } from "react-awesome-reveal";
 import { WithSize } from '../Hoc'
 import { SizeType } from '../../types/db-types'
 import Size from '../Size';
@@ -6,12 +7,12 @@ import './Item.scss';
 
 const Item = ({
     item, addToCart, actualRest, checked, sizesWithClass, chooseSize,
-    changeActualRest, collectionLabel, topLabel, ordered, browseImgs
+    changeActualRest, collectionLabel, topLabel, ordered, browseImgs, delay
 }: any) => {
     let { title, price, url, category, gender, sizes } = item;
 
     return (
-        <>
+        <Fade direction='up' triggerOnce delay={delay}>
             <div className='item'>
                 {collectionLabel}
                 {topLabel}
@@ -47,7 +48,7 @@ const Item = ({
                 />
             </div>
 
-        </>
+        </Fade>
     )
 }
 
