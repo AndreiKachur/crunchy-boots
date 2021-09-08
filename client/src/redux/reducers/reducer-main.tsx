@@ -1,5 +1,5 @@
 import { StateType, ActionsType, TL } from '../../types/store-types'
-import { DbItem, SizeType } from '../../types/db-types'
+import { CartItem, CartSizeType } from '../../types/db-types'
 
 const initialState: StateType = {
     boots: [],
@@ -9,17 +9,17 @@ const initialState: StateType = {
     ordered: false,
 }
 
-let findIdx: (cart: DbItem[], idSize: number) => number
+let findIdx: (cart: CartItem[], idSize: number) => number
 findIdx = (cart, idSize) => cart.findIndex((el) => el.idSize === idSize)
 
-const loadReducer = (
+const mainReducer = (
     state = initialState,
     actions: ActionsType): StateType => {
 
     const { cart, boots, ordered } = state
 
     let idx, id, idSize: number, newBoots,
-        newBoot: DbItem, newItem: DbItem
+        newBoot: CartItem, newItem: CartItem
 
     switch (actions.type) {
         case TL.BOOTS_LOADED:
@@ -40,11 +40,11 @@ const loadReducer = (
 
             if (idSize === 0 || ordered) return state
 
-            const addedYet = Boolean(cart.find((el: DbItem) => el.idSize === idSize))
+            const addedYet = Boolean(cart.find((el: CartItem) => el.idSize === idSize))
 
             newBoot = boots[id - 1]
 
-            const newBootEl = newBoot.sizes.find((el: SizeType) => el.id === idSize)
+            const newBootEl = newBoot.sizes.find((el: CartSizeType) => el.id === idSize)
 
             if (!newBootEl) return state
 
@@ -69,7 +69,7 @@ const loadReducer = (
             newBoots = [...boots.slice(0, id - 1), newBoot, ...boots.slice(id)]
 
             if (actions.cartButton) {
-                newItem = cart.find((el: DbItem) => el.idSize === idSize)
+                newItem = cart.find((el: CartItem) => el.idSize === idSize)
             } else {
                 newItem = JSON.parse(JSON.stringify(boots[id - 1]))
             }
@@ -77,7 +77,7 @@ const loadReducer = (
             if (newItem.actualSize === 0) { return state }
 
             if (addedYet) {
-                cart.forEach((el: DbItem) => {
+                cart.forEach((el: CartItem) => {
                     if (el.idSize === idSize) {
                         if (el.amount) {
                             newItem.amount = el.amount + actions.number;
@@ -105,18 +105,18 @@ const loadReducer = (
             idSize = actions.idSize
             idx = findIdx(cart, idSize)
 
-            newBoot = boots.find((el: DbItem) => {
+            newBoot = cart.find((el: CartItem) => {
                 let res = false
-                el.sizes.forEach((el: SizeType) => {
+                el.sizes.forEach((el: CartSizeType) => {
                     if (el.id === idSize) {
                         return res = true
                     }
                 })
                 return res
             })
-            const newBootSize = newBoot.sizes.find((el: SizeType) => el.id === idSize)
+            const newBootSize = newBoot.sizes.find((el: CartSizeType) => el.id === idSize)
 
-            if (!newBootSize || !newBootSize.maxRest) return state
+            if (!newBootSize) return state
 
             newBootSize.rest = newBootSize.maxRest
             idSize > 999 ?
@@ -149,4 +149,4 @@ const loadReducer = (
     }
 }
 
-export default loadReducer
+export default mainReducer

@@ -1,4 +1,4 @@
-import { DbItem } from './db-types'
+import { DbItem, CartItem } from './db-types'
 
 export interface LoadType {
     boots: DbItem[] | any[];
@@ -8,7 +8,7 @@ export interface StateType {
     boots: DbItem[] | any[];
     loading: boolean;
     error: boolean;
-    cart: DbItem[] | any[];
+    cart: CartItem[] | any[];
     ordered: boolean;
 }
 //TL -> TypeList

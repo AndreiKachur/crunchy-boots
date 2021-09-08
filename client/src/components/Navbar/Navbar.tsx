@@ -8,10 +8,10 @@ import { RiShoppingCartLine } from 'react-icons/ri';
 import { MenuItems } from './MenuItems'
 import NavBurgerMenu from '../NavBurgerMenu'
 import { State as ReducerStateTypes } from '../../redux/reducers'
-import { DbItem } from '../../types/db-types'
+import { CartItem } from '../../types/db-types'
 
 interface PropTypes {
-    cart: DbItem[]
+    cart: CartItem[]
     ordered: boolean
 }
 

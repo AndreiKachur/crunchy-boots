@@ -14,12 +14,20 @@ export interface DbItem {
     description: string;
     actualSize: number;
     sizes: SizeType[];
-    idSize: number | undefined;
+    idSize?: number;
     amount?: number
+}
+export interface CartItem extends DbItem {
+    idSize: number;
+    amount: number;
+    sizes: CartSizeType[];
 }
 export interface SizeType {
     size: number;
     id: number;
     rest: number;
-    maxRest: number | undefined
 }
+export interface CartSizeType extends SizeType {
+    maxRest: number
+}
+
