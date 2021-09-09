@@ -7,6 +7,8 @@ import { fetchBoots } from '../../redux/actions/actions-fetch'
 import Navbar from '../Navbar'
 import Main from '../Main'
 import ItemsList from '../ItemsList'
+import Register from '../Register'
+import Profile from '../Profile'
 import Footer from '../Footer'
 import Cart from '../Cart'
 import ScrollUp from '../ScrollUp'
@@ -32,6 +34,8 @@ function App() {
         <Route path='/sneakers' component={ItemsList} />
         <Route path='/contacts' component={Footer} />
         <Route path='/cart' component={Cart} />
+        <Route path='/register' component={Register} />
+        <Route path='/profile' component={Profile} />
       </Switch>
     </Router>
   );

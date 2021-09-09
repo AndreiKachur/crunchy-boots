@@ -93,8 +93,9 @@
         align-items: center;
         border: 2px solid $whity;
         border-radius: 12px;
-        right: 2rem;
+        right: 9.5rem;
         padding: 0 1rem;
+        margin-right: .4rem;
         z-index: 250;
         &:hover{
             @include hoverColor()
@@ -108,6 +109,26 @@
     }
     &__cart-price{
         padding: 5px;
+    }
+    //profile
+    &__profile{
+        position:absolute;
+        display: flex;
+        align-items: center;
+        border: 2px solid $whity;
+        border-radius: 12px;
+        right: 2rem;
+        padding: 0 .5rem;
+        z-index: 250;
+        &:hover{
+            @include hoverColor()
+        }
+    }
+    &__profile-title{
+        padding:5px;
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 

@@ -27,7 +27,7 @@ export default function validateInfo(values: ValuesTypes) {
     errors.phoneNumber = 'Phone number is invalid';
   }
   if (!values.email) {
-    errors.email = 'Email required';
+    errors.email = 'Email is required';
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
     errors.email = 'Email address is invalid';
   }

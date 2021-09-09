@@ -16,7 +16,7 @@ const FormSignup = ({ submitForm }: any) => {
       {/* <form action="/profile" method="POST" onSubmit={handleSubmit} className='form' noValidate> */}
       <form onSubmit={handleSubmit} className='form' noValidate>
         <h1>
-          Please fill out the order form.
+          Please fill out the registration form.
         </h1>
         <div className='form-inputs'>
           <label className='form-label'>Name</label>

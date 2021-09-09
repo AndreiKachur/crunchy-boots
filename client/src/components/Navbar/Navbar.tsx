@@ -4,6 +4,7 @@ import './Navbar.scss'
 
 import { SiCrunchbase } from 'react-icons/si';
 import { RiShoppingCartLine } from 'react-icons/ri';
+import { GoSignIn } from 'react-icons/go';
 
 import { MenuItems } from './MenuItems'
 import NavBurgerMenu from '../NavBurgerMenu'
@@ -60,6 +61,13 @@ function Navbar() {
                         <RiShoppingCartLine />
                         <p className='nav__cart-title'>Cart:</p>
                         {price}
+                    </div>
+                </NavLink>
+                <NavLink to='register' className='nav__wrapper'>
+                    <div className='nav__profile'
+                        onClick={() => window.scrollTo(0, 0)}>
+                        <GoSignIn />
+                        <p className='nav__profile-title'>Sign In/Up</p>
                     </div>
                 </NavLink>
             </nav>

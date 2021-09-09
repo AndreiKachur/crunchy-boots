@@ -1,13 +1,13 @@
 @import '../../variables.scss';
 
-.form-container {
-  margin: 5vh auto;
+.form-container_ {
+  margin: 5vh auto 4vh;
   width: 900px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
   position: relative;
   z-index:102;
   border-radius: 10px;
-  height: 600px;
+  height: 650px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   @media(max-width:950px){
@@ -157,7 +157,13 @@
   color: #fff;
   font-size: 1rem;
   font-weight: 700;
-  // transition: all 0.5s ease-out;
+  &_pink{
+    background: linear-gradient(
+    90deg,
+    rgb(251, 87, 142) 0%,
+    rgb(39, 176, 255) 100%
+  );
+  }
 }
 
 .form-input-btn:hover {
