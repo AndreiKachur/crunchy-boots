@@ -39,11 +39,11 @@
         padding-left: 1.2rem;
         left:0;
         z-index: 150;
-        @media (max-width:850px){
+        @media (max-width:900px){
             left: unset;
             right:40vw;
         }
-        @media (max-width:650px){
+        @media (max-width:750px){
             display:none;
         }
     }
@@ -62,7 +62,7 @@
         flex-direction: row;
         z-index: 200;
         font-size: 1.2rem;
-        @media (max-width:850px){
+        @media (max-width:900px){
             display:none;
         }
     }

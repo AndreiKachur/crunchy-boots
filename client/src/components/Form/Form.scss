@@ -76,7 +76,7 @@
   position: relative;
   z-index:102;
   background: linear-gradient(90deg, $dark-grey 0%, rgb(33, 40, 47) 100%);
-  @media(max-width:600px){
+  @media(max-width:700px){
     border-radius: 10px;
   }
 }
@@ -84,7 +84,7 @@
   border-radius: 0 10px 10px 0;
   position: relative;
   background: linear-gradient(90deg, $salad 0%, rgb(114, 175, 16) 100%);
-  @media(max-width:600px){
+  @media(max-width:700px){
     border-radius: 10px;
   }
 }
