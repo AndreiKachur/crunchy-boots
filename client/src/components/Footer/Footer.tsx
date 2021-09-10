@@ -18,9 +18,9 @@ function Footer() {
     return (
         <footer>
             <div className='footer'>
-                <Fade cascade direction='up' triggerOnce damping={0.2}>
+                <Fade cascade direction='up' triggerOnce damping={0.1}>
                     <ul className='footer__contacts'>
-                        <Fade cascade direction='up' triggerOnce damping={0.2}>
+                        <Fade cascade direction='up' triggerOnce damping={0.1}>
                             <li className='footer__list-item'>
                                 123456, London, Queen St.18
                 </li>
@@ -38,7 +38,7 @@ function Footer() {
 
 
                     <div className='icons'>
-                        <Fade cascade direction='up' triggerOnce damping={0.2}>
+                        <Fade cascade direction='up' triggerOnce damping={0.15}>
                             <a className='icons__item' href='https://ru-ru.facebook.com/'>
                                 < FaFacebookSquare />
                                 <span>facebook</span>
@@ -55,7 +55,7 @@ function Footer() {
                     </div>
 
                     <div className='icons'>
-                        <Fade cascade direction='up' triggerOnce damping={0.3}>
+                        <Fade cascade direction='up' triggerOnce damping={0.23}>
                             <div className='icons__item'>
                                 < FaCcVisa />
                                 <span>visa</span>
@@ -72,7 +72,7 @@ function Footer() {
                     </div>
 
                     <div className='icons'>
-                        <Fade cascade direction='up' triggerOnce damping={0.4}>
+                        <Fade cascade direction='up' triggerOnce damping={0.3}>
                             <div className='icons__item'>
                                 < FaCcAmazonPay />
                                 <span>amazon</span>
@@ -90,8 +90,10 @@ function Footer() {
                 </Fade>
             </div>
             <div className='copyright'>
-                <FaRegCopyright className='copyright__logo' />
-                <span>2021, CRUNCHY BOOTS</span>
+                <Fade cascade direction='up' triggerOnce damping={0.2}>
+                    <FaRegCopyright className='copyright__logo' />
+                    <span>2021, CRUNCHY BOOTS</span>
+                </Fade>
             </div>
         </footer>
     )

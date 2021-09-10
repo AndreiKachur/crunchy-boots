@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { onDelete } from '../../redux/actions/actions'
 import { useTypedSelector } from '../../redux/reducers'
 import CartEmpty from '../CartEmpty'
 import CartItem from '../CartItem'
-import Form from '../Form/Form'
+// import Form from '../Form-Sign-In/Form'
 import './Cart.scss';
 
 function Cart() {
@@ -27,16 +28,10 @@ function Cart() {
         if (e.type === 'click') setOpenForm(false)
     }
 
-    if (ordered) return <Form closeForm={closeForm} />
+    // if (ordered) return <Form closeForm={closeForm} />
     if (cart.length === 0) { return <CartEmpty /> }
-    if (openForm) {
-        return (
-            <>
-                <div className='modal' onClick={closeForm}></div>
-                <Form closeForm={closeForm} />
-            </>
-        )
-    }
+    if (openForm) { return <Redirect to='/register' /> }
+
     return (
         <>
             <div className='cart-wrapper'>

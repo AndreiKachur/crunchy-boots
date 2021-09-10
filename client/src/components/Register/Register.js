@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { useTypedSelector } from '../../redux/reducers';
+import { useDispatch } from 'react-redux';
+import { firstTime } from '../../redux/actions/actions'
 import Form from '../Form-Sign-In/Form.tsx'
 import './Register.scss';
 
@@ -6,44 +9,47 @@ function Register() {
     const [signUp, setSignUp] = useState(true)
     const [firstChoiсe, setFirstChoiсe] = useState(true)
 
+    const { newbie } = useTypedSelector(s => s.register)
+    const dispatch = useDispatch()
+
     const makeChoice = (choice = true) => {
         setFirstChoiсe(false)
         if (!choice) setSignUp(choice)
     }
 
-    if (firstChoiсe) {
+    if (newbie === undefined) {
         return (
             <div className='register__wrapper'>
                 < div className='register register__first-choise' >
-                    <h1 className='register'>
+                    <h1 className='register register__question'>
                         Are you first time here?
                     </h1>
-                    <button className='register__btn' onClick={makeChoice}>
+                    <button className='register__btn' onClick={() => dispatch(firstTime(true))}>
                         Sign Up
                     </button>
                 </div >
                 < div className='register register__first-choise' >
-                    <h1 className='register'>
+                    <h1 className='register register__question'>
                         Do you already have an account?
                     </h1>
-                    <button className='register__btn' onClick={() => makeChoice(false)}>
+                    <button className='register__btn' onClick={() => dispatch(firstTime(false))}>
                         Sign In
                     </button>
                 </div>
             </div>
         )
     }
-    const question = signUp ? 'Do you already have an account?'
+    const question = newbie ? 'Do you already have an account?'
         : 'Are you first time here?'
-    const buttonText = signUp ? 'Sign In' : 'Sign Up'
+    const buttonText = newbie ? 'Sign In' : 'Sign Up'
     return (
         <div className='register'>
-            <Form signUp={signUp} />
+            <Form newbie={newbie} />
             <div className='register__container'>
-                <h1 className='register'>
+                <h1 className='register register__question'>
                     {question}
                 </h1>
-                <button className='register__btn' onClick={() => { setSignUp(!signUp) }}>
+                <button className='register__btn' onClick={() => dispatch(firstTime(!newbie))}>
                     {buttonText}
                 </button>
             </div>

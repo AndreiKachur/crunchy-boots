@@ -7,16 +7,16 @@ import './Item.scss';
 
 const Item = ({
     item, addToCart, actualRest, checked, sizesWithClass, chooseSize,
-    changeActualRest, collectionLabel, topLabel, ordered, browseImgs, delay
+    changeActualRest, collectionLabel, topLabel, ordered, browseImgs
 }: any) => {
     let { title, price, url, category, gender, sizes } = item;
 
     return (
-        <Fade direction='up' triggerOnce delay={delay}>
+        <Fade direction='up' triggerOnce >
             <div className='item'>
                 {collectionLabel}
                 {topLabel}
-                <div className='item__img-wrapper' onClick={browseImgs}>
+                <div onClick={browseImgs} className='item__img-wrapper'>
                     <img className='item__img item__img_hide' src={url[0]} alt={title} />
                     <img className='item__img item__img_bg' src={url[3]} alt={title} />
                 </div>

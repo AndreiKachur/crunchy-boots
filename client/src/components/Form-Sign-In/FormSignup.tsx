@@ -58,7 +58,7 @@ const FormSignup = ({ submitForm }: any) => {
           {errors.email && <p>{errors.email}</p>}
         </div>
         <button className='form-input-btn' type='submit'>
-          Place order
+          Sign Up
         </button>
         <span className='form-input-login'>
           Don't want fill out the form? <br /> Сall us: 8-800-555-55-55

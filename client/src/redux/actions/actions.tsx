@@ -19,10 +19,13 @@ const placeOrder = () => ({ type: 'PLACE_ORDER' })
 
 const browsePics = (id = 0) => ({ type: 'BROWSE_PICS', id: id })
 
+const firstTime = (firstTime: boolean) => ({ type: 'FIRST_TIME', payload: firstTime })
+
 export {
     changeCart,
     addSize,
     onDelete,
     placeOrder,
-    browsePics
+    browsePics,
+    firstTime
 }

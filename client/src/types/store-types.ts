@@ -19,12 +19,20 @@ export enum TL {
     CHECK_SIZE = 'CHECK_SIZE',
     DELETE_FROM_CART = 'DELETE_FROM_CART',
     PLACE_ORDER = 'PLACE_ORDER',
-    BROWSE_PICS = 'BROWSE_PICS'
+    BROWSE_PICS = 'BROWSE_PICS',
+    FIRST_TIME = 'FIRST_TIME'
 }
 
 export interface PicsType {
     picsSlider: boolean;
     picId: number
+}
+export interface RegisterType {
+    newbie?: boolean;
+}
+export interface FirstTimeActionType {
+    type: TL.FIRST_TIME;
+    payload?: boolean;
 }
 export interface BrowsePicsActionType {
     type: TL.BROWSE_PICS;
@@ -59,5 +67,9 @@ export interface DeleteFromCartAT {
 export interface PlaceOrderAT {
     type: TL.PLACE_ORDER;
 }
+export interface FirstTimeAT {
+    type: TL.FIRST_TIME;
+}
 
-export type ActionsType = BootsLoadedAT | BootsRequestedAT | ChangeCartAT | ChangeCartAT | CheckSizeAT | DeleteFromCartAT | PlaceOrderAT
+export type ActionsType = BootsLoadedAT | BootsRequestedAT | ChangeCartAT
+    | ChangeCartAT | CheckSizeAT | DeleteFromCartAT | PlaceOrderAT | FirstTimeAT

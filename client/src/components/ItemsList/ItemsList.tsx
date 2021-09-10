@@ -35,7 +35,6 @@ const ItemsList: React.FC = () => {
     }
 
     if (loading) return <Spinner />
-    let delay = -60
 
     return (
         <>
@@ -54,13 +53,11 @@ const ItemsList: React.FC = () => {
                 {
                     boots.map((item: DbItem) => {
                         if (gender === item.gender.toLowerCase() || gender === 'all') {
-                            delay += 60
                             if (type === item.category.toLowerCase() ||
                                 type === item.boost ||
                                 type === 'all') {
                                 return (
                                     <Item
-                                        delay={delay}
                                         key={item.id}
                                         item={item}
                                         ordered={ordered}

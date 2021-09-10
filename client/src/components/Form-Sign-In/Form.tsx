@@ -9,10 +9,10 @@ import './Form.scss';
 
 interface PropTypes {
   closeForm: (e: any) => void,
-  signUp: Boolean
+  newbie: Boolean
 }
 
-const Form = ({ closeForm, signUp }: PropTypes) => {
+const Form = ({ closeForm, newbie }: PropTypes) => {
 
   const { ordered } = useTypedSelector((s: ReducerStateTypes) => s.load)
   const dispatch = useDispatch()
@@ -31,7 +31,7 @@ const Form = ({ closeForm, signUp }: PropTypes) => {
 
         {ordered && <FormSuccess />}
 
-        {signUp ?
+        {newbie ?
           <FormSignUp />
           : (
             <FormSignIn submitForm={() => dispatch(placeOrder())} />
