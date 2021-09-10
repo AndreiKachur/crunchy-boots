@@ -4,7 +4,7 @@ import useForm from './useForm';
 import './Form.scss';
 import 'react-phone-number-input/style.css'
 
-const FormSignup = ({ submitForm }: any) => {
+const FormSignup = ({ submitForm, onSended, sended }: any) => {
 
   const { handleChange, handleSubmit, handleNumberChange, values, errors }: any = useForm(
     submitForm,
@@ -12,8 +12,7 @@ const FormSignup = ({ submitForm }: any) => {
   );
 
   return (
-    <div className='form-content-right'>
-      {/* <form action="/profile" method="POST" onSubmit={handleSubmit} className='form' noValidate> */}
+    <div className='form-content-right' hidden={sended}>
       <form onSubmit={handleSubmit} className='form' noValidate>
         <h1>
           Please fill out the registration form.
@@ -57,7 +56,7 @@ const FormSignup = ({ submitForm }: any) => {
           />
           {errors.email && <p>{errors.email}</p>}
         </div>
-        <button className='form-input-btn' type='submit'>
+        <button className='form-input-btn' type='submit' onClick={onSended}>
           Sign Up
         </button>
         <span className='form-input-login'>

@@ -9,8 +9,11 @@ export interface StateType {
     loading: boolean;
     error: boolean;
     cart: CartItem[] | any[];
-    ordered: boolean;
 }
+export interface RegisterType {
+    newbie?: boolean;
+}
+
 //TL -> TypeList
 export enum TL {
     BOOTS_LOADED = 'BOOTS_LOADED',
@@ -18,7 +21,6 @@ export enum TL {
     CHANGE_CART = 'CHANGE_CART',
     CHECK_SIZE = 'CHECK_SIZE',
     DELETE_FROM_CART = 'DELETE_FROM_CART',
-    PLACE_ORDER = 'PLACE_ORDER',
     BROWSE_PICS = 'BROWSE_PICS',
     FIRST_TIME = 'FIRST_TIME'
 }
@@ -26,9 +28,6 @@ export enum TL {
 export interface PicsType {
     picsSlider: boolean;
     picId: number
-}
-export interface RegisterType {
-    newbie?: boolean;
 }
 export interface FirstTimeActionType {
     type: TL.FIRST_TIME;
@@ -64,12 +63,9 @@ export interface DeleteFromCartAT {
     type: TL.DELETE_FROM_CART;
     idSize: number;
 }
-export interface PlaceOrderAT {
-    type: TL.PLACE_ORDER;
-}
 export interface FirstTimeAT {
     type: TL.FIRST_TIME;
 }
 
 export type ActionsType = BootsLoadedAT | BootsRequestedAT | ChangeCartAT
-    | ChangeCartAT | CheckSizeAT | DeleteFromCartAT | PlaceOrderAT | FirstTimeAT
+    | ChangeCartAT | CheckSizeAT | DeleteFromCartAT | FirstTimeAT

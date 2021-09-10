@@ -4,13 +4,12 @@ interface PropTypes {
     addToCart: any
     checked: boolean
     actualRest: number
-    ordered: boolean
 }
 
 function WithPopOver<T extends PropTypes>(Wrapped: React.FC<T>) {
     return (function WithPopOver(props: T) {
 
-        const { addToCart, checked, actualRest, ordered } = props
+        const { addToCart, checked, actualRest } = props
 
         const [pop, setPop] = useState<boolean>(false)
         const [text, setText] = useState<string>('Please choose any size')
@@ -27,9 +26,6 @@ function WithPopOver<T extends PropTypes>(Wrapped: React.FC<T>) {
             setTimeout(() => setPop(false), time)
         }
         const onCart = () => {
-            if (ordered) {
-                return onPopOver("You've already made an order. Please wait a bit. Our manager definitely will contact you soon.", 4500)
-            }
             if (sizeChecked && actualRest === 0) {
                 return onPopOver("Sorry, but there's nothing left. Choose another size.", 2600)
             }

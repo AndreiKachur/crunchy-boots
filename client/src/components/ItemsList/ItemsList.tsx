@@ -16,7 +16,7 @@ const ItemsList: React.FC = () => {
 
     const dispatch = useDispatch()
 
-    const { load: { boots, loading, ordered },
+    const { load: { boots, loading },
         pics: { picId, picsSlider } } = useTypedSelector(s => s)
 
     const onFilter = (filterOption: string, argType: string) => {
@@ -60,7 +60,6 @@ const ItemsList: React.FC = () => {
                                     <Item
                                         key={item.id}
                                         item={item}
-                                        ordered={ordered}
                                         browseImgs={() => dispatch(browsePics(item.id - 1))}
                                         addToCart={(actualRest: number) => {
                                             dispatch(changeCart(item.id, item.idSize, actualRest))

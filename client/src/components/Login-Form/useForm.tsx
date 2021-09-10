@@ -1,16 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useTypedSelector } from '../../redux/reducers'
 
 const useForm = (callback: any, validate: any) => {
   const [values, setValues] = useState({
     username: '',
     email: '',
-    phoneNumber: '',
-    comment: ''
+    phoneNumber: ''
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { cart } = useTypedSelector(s => s.load)
 
   const handleNumberChange = (number: string) => {
     setValues({
@@ -35,18 +32,20 @@ const useForm = (callback: any, validate: any) => {
   useEffect(
     () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
-
+        const pass = Math.random().toString().slice(2, 6)
         const user = {
           username: values.username,
           email: values.email,
-          phoneNumber: values.phoneNumber
+          phoneNumber: values.phoneNumber,
+          password: pass
         }
+
         fetch('/profile', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json;charset=utf-8' },
-          body: JSON.stringify({ user, cart })
+          body: JSON.stringify({ user })
         })
-        callback();
+        // callback();
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [errors]);

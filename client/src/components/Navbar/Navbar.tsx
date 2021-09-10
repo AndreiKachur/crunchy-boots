@@ -13,16 +13,15 @@ import { CartItem } from '../../types/db-types'
 
 interface PropTypes {
     cart: CartItem[]
-    ordered: boolean
 }
 
 function Navbar() {
 
-    const { cart, ordered }: PropTypes = useTypedSelector((s: ReducerStateTypes) => s.load)
+    const { cart }: PropTypes = useTypedSelector((s: ReducerStateTypes) => s.load)
 
     const calculateSum = () =>
         cart.reduce((acc, item) => acc + item.price * (item.amount || 0), 0)
-    const price = (ordered || cart.length === 0) ?
+    const price = cart.length === 0 ?
         <span className='nav__cart-price'>0$</span> :
         <span className='nav__cart-price'>{calculateSum()}$</span>
 

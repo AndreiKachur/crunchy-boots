@@ -13,7 +13,7 @@ import './CardsSlider.scss';
 function CardsSlider() {
 
     const dispatch = useDispatch()
-    const { load: { boots, loading, ordered },
+    const { load: { boots, loading },
         pics: { picsSlider, picId } } = useTypedSelector(s => s)
 
     if (loading) return <Spinner />
@@ -58,7 +58,6 @@ function CardsSlider() {
                     {boots.map((item: DbItem) => <Card
                         key={item.id}
                         item={item}
-                        ordered={ordered}
                         browseImgs={() => dispatch(browsePics(item.id - 1))}
                         addToCart={(actualRest: number) => dispatch(
                             changeCart(item.id, item.idSize, actualRest))}

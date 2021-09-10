@@ -1,21 +1,13 @@
-import { useState } from 'react'
 import { useTypedSelector } from '../../redux/reducers';
 import { useDispatch } from 'react-redux';
 import { firstTime } from '../../redux/actions/actions'
-import Form from '../Form-Sign-In/Form.tsx'
-import './Register.scss';
+import Form from '../Login-Form/Form.tsx'
+import './Login.scss';
 
-function Register() {
-    const [signUp, setSignUp] = useState(true)
-    const [firstChoiсe, setFirstChoiсe] = useState(true)
+function Login() {
 
     const { newbie } = useTypedSelector(s => s.register)
     const dispatch = useDispatch()
-
-    const makeChoice = (choice = true) => {
-        setFirstChoiсe(false)
-        if (!choice) setSignUp(choice)
-    }
 
     if (newbie === undefined) {
         return (
@@ -57,4 +49,4 @@ function Register() {
     )
 }
 
-export default Register
+export default Login

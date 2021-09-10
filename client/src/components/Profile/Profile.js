@@ -15,20 +15,17 @@ function Profile() {
             .then((res) => setState(res))
     }, [])
     if (state.length > 0) {
-        const { cart, username, phoneNumber } = state[0]
-        const { title, price, amount } = cart.items[0]
+        const { username, email, password } = state[0]
 
         return (
             <div style={{ margin: '5rem' }}>
-                <h1>{username}, your order was placed.</h1>
-                <p>We will connect with you by {phoneNumber}.</p>
-                <h1>Your order is:</h1>
-                <ul>
-                    <li>title: {title}</li>
-                    <li>price: {price}</li>
-                    <li>amount: {amount}</li>
-                    <li><h3>total: {price * amount}</h3></li>
-                </ul>
+                <h1>Hello, {username}.</h1>
+                <br></br>
+                <h3>This is your profile enter data:</h3> <br /> <hr /> <br />
+                <h4>login: </h4>
+                <h3>{email}</h3><br /> <hr /><br />
+                <h4>password:</h4>
+                <h3> {password}</h3> <br /> <hr />
             </div>
         )
     } else {

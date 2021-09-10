@@ -7,21 +7,16 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     phoneNumber: {
         type: String,
         required: true
     },
-    cart: {
-        items: [
-            {
-                title: { type: String, required: true },
-                bootId: { type: Schema.Types.ObjectId, required: true, ref: 'Boots' },
-                price: { type: Number, required: true },
-                amount: { type: Number, required: true, default: 1 },
-            }
-        ]
+    password: {
+        type: String,
+        required: true
     }
 })
 

@@ -8,7 +8,7 @@ import './Card.scss';
 
 
 function Card({ item, addToCart, actualRest, checked, sizesWithClass, chooseSize,
-    changeActualRest, collectionLabel, topLabel, ordered, browseImgs }: any) {
+    changeActualRest, collectionLabel, topLabel, browseImgs }: any) {
 
     let { title, price, url, sizes, id, gender } = item;
 
@@ -47,7 +47,6 @@ function Card({ item, addToCart, actualRest, checked, sizesWithClass, chooseSize
                         addToCart={() => addToCart(changeActualRest())}
                         actualRest={actualRest}
                         checked={checked}
-                        ordered={ordered}
                     />
                 </div>
             </div>

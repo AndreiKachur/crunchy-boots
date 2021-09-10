@@ -3,19 +3,15 @@ import useForm from './useForm';
 import './Form.scss';
 import 'react-phone-number-input/style.css'
 
-const FormSignup = ({ submitForm }: any) => {
+const FormSignup = ({ submitForm, onSended, sended }: any) => {
 
-  const { handleChange, handleSubmit, handleNumberChange, values, errors }: any = useForm(
-    submitForm,
-    validate
-  );
+  const { handleSubmit }: any = useForm(submitForm, validate);
 
   return (
-    <div className='form-content-right'>
-      <form action="/profile" method="POST" className='form' />
-      <form onSubmit={handleSubmit} className='form' noValidate>
+    <div className='form-content-right' hidden={sended}>
+      <form method='POST' onSubmit={handleSubmit} className='form' noValidate>
         <h1>
-          Please put your login data.
+          Please enter your login data.
         </h1>
         <div className='form-inputs'>
           <label className='form-label'>Email</label>
@@ -24,11 +20,8 @@ const FormSignup = ({ submitForm }: any) => {
             type='email'
             name='email'
             placeholder='Enter your email'
-            value={values.email}
-            onChange={handleChange}
             required
           />
-          {errors.email && <p>{errors.email}</p>}
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Password</label>
@@ -37,12 +30,10 @@ const FormSignup = ({ submitForm }: any) => {
             type='password'
             name='password'
             placeholder='Enter your password'
-            value={values.password}
-            onChange={handleChange}
+            required
           />
-          {errors.password && <p>{errors.password}</p>}
         </div>
-        <button className='form-input-btn' type='submit'>
+        <button className='form-input-btn' type='submit' onClick={onSended}>
           Sign In
         </button>
 

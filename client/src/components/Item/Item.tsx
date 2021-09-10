@@ -7,7 +7,7 @@ import './Item.scss';
 
 const Item = ({
     item, addToCart, actualRest, checked, sizesWithClass, chooseSize,
-    changeActualRest, collectionLabel, topLabel, ordered, browseImgs
+    changeActualRest, collectionLabel, topLabel, browseImgs
 }: any) => {
     let { title, price, url, category, gender, sizes } = item;
 
@@ -44,7 +44,6 @@ const Item = ({
                     addToCart={() => addToCart(changeActualRest())}
                     checked={checked}
                     actualRest={actualRest}
-                    ordered={ordered}
                 />
             </div>
 

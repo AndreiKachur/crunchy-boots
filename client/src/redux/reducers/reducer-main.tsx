@@ -5,8 +5,7 @@ const initialState: StateType = {
     boots: [],
     loading: true,
     error: false,
-    cart: [],
-    ordered: false,
+    cart: []
 }
 
 let findIdx: (cart: CartItem[], idSize: number) => number
@@ -16,7 +15,7 @@ const mainReducer = (
     state = initialState,
     actions: ActionsType): StateType => {
 
-    const { cart, boots, ordered } = state
+    const { cart, boots } = state
 
     let idx, id, idSize: number, newBoots,
         newBoot: CartItem, newItem: CartItem
@@ -38,7 +37,7 @@ const mainReducer = (
             idSize = actions.idSize
             idx = findIdx(cart, idSize)
 
-            if (idSize === 0 || ordered) return state
+            if (idSize === 0) return state
 
             const addedYet = Boolean(cart.find((el: CartItem) => el.idSize === idSize))
 
@@ -140,11 +139,7 @@ const mainReducer = (
                     newItem,
                 ...boots.slice(itemId)]
             }
-        case TL.PLACE_ORDER:
-            return {
-                ...state,
-                ordered: true
-            }
+
         default: return state
     }
 }
