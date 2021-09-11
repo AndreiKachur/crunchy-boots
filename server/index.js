@@ -5,24 +5,24 @@ const mongoose = require('mongoose')
 const Boots = require('./models/boots.js')
 const User = require('./models/user.js')
 const profile = require('./routes/profile')
+const login = require('./routes/login')
 
 const app = express()
 
 app.use(express.json())
-// app.use(express.static(path.join(__dirname, 'public')))
-// app.use(express.static(path.join(__dirname, 'src')))
 app.use(express.urlencoded({ extended: true }))
-app.use(async (req, res, next) => {
-    try {
-        const user = await User.findById('6139bb9982969ddce3c252d2')
-        req.user = user
-        next()
-    } catch (e) {
-        console.log(e);
-    }
-})
+// app.use(async (req, res, next) => {
+//     try {
+//         const user = await User.findById('6139bb9982969ddce3c252d2')
+//         req.user = user
+//         next()
+//     } catch (e) {
+//         console.log(e);
+//     }
+// })
 
 app.use('/profile', profile)
+app.use('/login', login)
 
 const PORT = process.env.PORT || config.get('port')
 

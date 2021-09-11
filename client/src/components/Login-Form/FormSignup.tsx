@@ -13,7 +13,7 @@ const FormSignup = ({ submitForm, onSended, sended }: any) => {
 
   return (
     <div className='form-content-right' hidden={sended}>
-      <form onSubmit={handleSubmit} className='form' noValidate>
+      <form method='POST' action='/profile' onSubmit={handleSubmit} className='form' noValidate>
         <h1>
           Please fill out the registration form.
         </h1>

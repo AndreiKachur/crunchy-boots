@@ -1,15 +1,41 @@
 import validate from './validateInfo';
 import useForm from './useForm';
+import { useState } from 'react';
 import './Form.scss';
 import 'react-phone-number-input/style.css'
 
-const FormSignup = ({ submitForm, onSended, sended }: any) => {
+const FormSignIn = ({ submitForm, onSended, sended }: any) => {
+
+  const [values, setValues] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value
+    });
+  };
 
   const { handleSubmit }: any = useForm(submitForm, validate);
 
+  const sendLogin = async (email: string) => {
+    await fetch('/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({ email })
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(e => console.log(e))
+      .finally(() => console.log('SendLogin was completed.'))
+  }
+
   return (
-    <div className='form-content-right' hidden={sended}>
-      <form method='POST' onSubmit={handleSubmit} className='form' noValidate>
+    <div className='form-content-right' hidden={sended} >
+      <form method='POST' action='/login' className='form' noValidate>
         <h1>
           Please enter your login data.
         </h1>
@@ -42,4 +68,4 @@ const FormSignup = ({ submitForm, onSended, sended }: any) => {
   );
 };
 
-export default FormSignup;
+export default FormSignIn;

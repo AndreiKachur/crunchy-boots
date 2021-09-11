@@ -7,7 +7,7 @@ function Profile() {
         fetch('/users')
             .then(res => {
                 if (!res.ok) {
-                    throw new Error(`Could not fetch boots,
+                    throw new Error(`Could not fetch user,
                             status ${res.status}`)
                 }
                 return res.json()

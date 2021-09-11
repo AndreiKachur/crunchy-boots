@@ -29,6 +29,18 @@ const useForm = (callback: any, validate: any) => {
     setIsSubmitting(true);
   };
 
+  const sendForm = async (user: any) => {
+    await fetch('/profile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({ user })
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(e => console.log(e))
+      .finally(() => console.log('SendForm was completed.'))
+  }
+
   useEffect(
     () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
@@ -39,12 +51,8 @@ const useForm = (callback: any, validate: any) => {
           phoneNumber: values.phoneNumber,
           password: pass
         }
+        sendForm(user)
 
-        fetch('/profile', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json;charset=utf-8' },
-          body: JSON.stringify({ user })
-        })
         // callback();
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
