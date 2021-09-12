@@ -13,7 +13,14 @@ router.post('/', async (req, res) => {
         })
         await candidate.save()
 
-        res.json({ message: "User was added." })
+        const createdUser = await User.findOne({ email: user.email })
+
+        if (createdUser === undefined) {
+            res.status(400).json({ message: "CreatedUser error" })
+        }
+
+        res.json(createdUser._id)
+
     } catch (e) {
         console.log(e);
         res.status(400).json({ message: "SignUp error" })

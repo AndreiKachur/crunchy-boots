@@ -1,10 +1,12 @@
-import validate from './validateInfo';
-import useForm from './useForm';
 import { useState } from 'react';
-import './Form.scss';
+import { useDispatch } from 'react-redux'
+import { getUserId } from '../../redux/actions/actions-reg';
 import 'react-phone-number-input/style.css'
+import './Form.scss';
 
-const FormSignIn = ({ submitForm, onSended, sended }: any) => {
+const FormSignIn = ({ onSended, sended }: any) => {
+
+  const dispatch = useDispatch()
 
   const [values, setValues] = useState({
     email: '',
@@ -19,23 +21,25 @@ const FormSignIn = ({ submitForm, onSended, sended }: any) => {
     });
   };
 
-  const { handleSubmit }: any = useForm(submitForm, validate);
+  const sendLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const sendLogin = async (email: string) => {
     await fetch('/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
-      body: JSON.stringify({ email })
+      body: JSON.stringify(values)
     })
       .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(e => console.log(e))
-      .finally(() => console.log('SendLogin was completed.'))
+      .then(data => dispatch(getUserId(data)))
+      .catch(e => {
+        console.log(e)
+        dispatch(getUserId(''))
+      })
   }
 
   return (
     <div className='form-content-right' hidden={sended} >
-      <form method='POST' action='/login' className='form' noValidate>
+      <form onSubmit={sendLogin} className='form' noValidate>
         <h1>
           Please enter your login data.
         </h1>
@@ -46,6 +50,8 @@ const FormSignIn = ({ submitForm, onSended, sended }: any) => {
             type='email'
             name='email'
             placeholder='Enter your email'
+            value={values.email}
+            onChange={handleChange}
             required
           />
         </div>
@@ -56,6 +62,8 @@ const FormSignIn = ({ submitForm, onSended, sended }: any) => {
             type='password'
             name='password'
             placeholder='Enter your password'
+            value={values.password}
+            onChange={handleChange}
             required
           />
         </div>

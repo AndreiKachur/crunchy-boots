@@ -6,14 +6,14 @@ router.post('/', async (req, res) => {
     try {
         const { email, password } = req.body
         const candidate = await User.findOne({ email })
-        console.log(candidate)
+
         if (!candidate) {
-            return res.status(400).json({ message: 'User is not finded.' })
+            return res.status(400).json({ message: 'User did not found.' })
         }
         if (candidate.password !== password) {
             return res.status(400).json({ message: 'Password is not correct.' })
         }
-        res.json(candidate)
+        res.json(candidate._id)
 
     } catch (e) {
         console.log(e);

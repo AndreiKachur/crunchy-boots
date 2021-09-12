@@ -1,21 +1,26 @@
 import { useEffect, useState } from 'react'
+import { useTypedSelector } from '../../redux/reducers'
 
 function Profile() {
-    const [state, setState] = useState([])
+    const [state, setState] = useState({})
+    const { userId } = useTypedSelector(s => s.register)
 
     useEffect(() => {
-        fetch('/users')
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(`Could not fetch user,
+        if (userId !== '') {
+            fetch(`/users?_id=${userId}`)
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error(`Could not fetch user,
                             status ${res.status}`)
-                }
-                return res.json()
-            })
-            .then((res) => setState(res))
-    }, [])
-    if (state.length > 0) {
-        const { username, email, password } = state[0]
+                    }
+                    return res.json()
+                })
+                .then((res) => setState(...res))
+        }
+    }, [userId])
+
+    if (state.email) {
+        const { username, email, password } = state
 
         return (
             <div style={{ margin: '5rem' }}>
@@ -31,7 +36,7 @@ function Profile() {
     } else {
         return (
             <div style={{ margin: '5rem' }}>
-                <h1>Empty profile.</h1>
+                <h1>Incorrect login data.</h1>
             </div>
         )
     }

@@ -17,12 +17,10 @@ const onDelete = (idSize: number) => ({ type: 'DELETE_FROM_CART', idSize: idSize
 
 const browsePics = (id = 0) => ({ type: 'BROWSE_PICS', id: id })
 
-const firstTime = (firstTime: boolean) => ({ type: 'FIRST_TIME', payload: firstTime })
 
 export {
     changeCart,
     addSize,
     onDelete,
     browsePics,
-    firstTime
 }

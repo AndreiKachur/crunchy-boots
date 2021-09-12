@@ -31,8 +31,9 @@ app.get('/boots', async (req, res) => {
     res.status(200).json(boots)
 })
 app.get('/users', async (req, res) => {
-    const users = await User.find()
-    res.json(users)
+    console.log(req.query.userId)
+    const user = await User.find(req.query)
+    res.json(user)
 })
 
 async function start() {

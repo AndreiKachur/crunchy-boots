@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
+import { getUserId } from '../../redux/actions/actions-reg';
 
 const useForm = (callback: any, validate: any) => {
+
+  const dispatch = useDispatch()
+
   const [values, setValues] = useState({
     username: '',
     email: '',
@@ -36,9 +41,11 @@ const useForm = (callback: any, validate: any) => {
       body: JSON.stringify({ user })
     })
       .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(e => console.log(e))
-      .finally(() => console.log('SendForm was completed.'))
+      .then(data => dispatch(getUserId(data)))
+      .catch(e => {
+        console.log(e)
+        dispatch(getUserId(''))
+      })
   }
 
   useEffect(
@@ -51,6 +58,7 @@ const useForm = (callback: any, validate: any) => {
           phoneNumber: values.phoneNumber,
           password: pass
         }
+
         sendForm(user)
 
         // callback();

@@ -11,10 +11,16 @@ function Cart() {
 
     const [openForm, setOpenForm] = useState(false)
     const dispatch = useDispatch()
-    const { cart } = useTypedSelector(s => s.load)
+    const { load: { cart }, register: { userId } } = useTypedSelector(s => s)
 
     if (cart.length === 0) { return <CartEmpty /> }
-    if (openForm) { return <Redirect to='/register' /> }
+    if (openForm) {
+        if (!userId) {
+            return <Redirect to='/register' />
+        } else {
+            return <Redirect to='/profile' />
+        }
+    }
 
     return (
         <>

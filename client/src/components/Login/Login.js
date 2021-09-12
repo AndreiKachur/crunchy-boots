@@ -1,6 +1,6 @@
 import { useTypedSelector } from '../../redux/reducers';
 import { useDispatch } from 'react-redux';
-import { firstTime } from '../../redux/actions/actions'
+import { firstTime } from '../../redux/actions/actions-reg'
 import Form from '../Login-Form/Form.tsx'
 import './Login.scss';
 
