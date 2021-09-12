@@ -39,11 +39,11 @@
         padding-left: 1.2rem;
         left:0;
         z-index: 150;
-        @media (max-width:900px){
+        @media (max-width:1025px){
             left: unset;
             right:40vw;
         }
-        @media (max-width:750px){
+        @media (max-width:900px){
             display:none;
         }
     }
@@ -62,7 +62,7 @@
         flex-direction: row;
         z-index: 200;
         font-size: 1.2rem;
-        @media (max-width:900px){
+        @media (max-width:1025px){
             display:none;
         }
     }
@@ -70,7 +70,7 @@
         padding: 0 1.5rem;
         list-style-type: none;
 
-        @media (max-width:1050px){
+        @media (max-width:1150px){
             padding: 0 .5rem;
         }
         &:hover{
@@ -86,22 +86,38 @@
                 @include hoverColor()
         }
     }
-    //cart
-    &__cart{
-        position:absolute;
+    //block
+    &__block{
+        position: absolute;
+        right: 1.5rem;
         display: flex;
-        align-items: center;
-        border: 2px solid $whity;
-        border-radius: 12px;
-        right: 9.5rem;
-        padding: 0 1rem;
-        margin-right: .4rem;
-        z-index: 250;
-        &:hover{
-            @include hoverColor()
+        justify-content: space-between;
+        @media (max-width:1025px){
+            right: .8rem;
+        }
+        & div{
+            display: flex;
+            margin-right:0.5rem;
+            align-items: center;
+            border: 2px solid $whity;
+            border-radius: 5px;
+            padding: 0 .5rem;
+            z-index: 250;
+            @media (max-width:450px){
+                border: none;
+                padding:0 .1rem;
+            }
+            &:hover{
+                @include hoverColor()
+            }
+        }
+        & p{
+            @media (max-width:450px){
+                display: none;
+            }
         }
     }
-    &__cart-title{
+    &__title{
         padding:5px;
         &:hover {
             text-decoration: underline;
@@ -109,26 +125,6 @@
     }
     &__cart-price{
         padding: 5px;
-    }
-    //profile
-    &__profile{
-        position:absolute;
-        display: flex;
-        align-items: center;
-        border: 2px solid $whity;
-        border-radius: 12px;
-        right: 2rem;
-        padding: 0 .5rem;
-        z-index: 250;
-        &:hover{
-            @include hoverColor()
-        }
-    }
-    &__profile-title{
-        padding:5px;
-        &:hover {
-            text-decoration: underline;
-        }
     }
 }
 

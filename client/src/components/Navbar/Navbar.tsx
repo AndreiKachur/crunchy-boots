@@ -1,13 +1,17 @@
+import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { useTypedSelector } from '../../redux/reducers'
 import './Navbar.scss'
 
 import { SiCrunchbase } from 'react-icons/si';
 import { RiShoppingCartLine } from 'react-icons/ri';
 import { GoSignIn } from 'react-icons/go';
+import { BsPersonSquare } from 'react-icons/bs';
+import { MdExitToApp } from 'react-icons/md';
 
 import { MenuItems } from './MenuItems'
 import NavBurgerMenu from '../NavBurgerMenu'
+import { useTypedSelector } from '../../redux/reducers'
+import { getUserId } from '../../redux/actions/actions-reg';
 import { State as ReducerStateTypes } from '../../redux/reducers'
 import { CartItem } from '../../types/db-types'
 
@@ -16,6 +20,9 @@ interface PropTypes {
 }
 
 function Navbar() {
+
+    const { userId } = useTypedSelector(s => s.register)
+    const dispatch = useDispatch()
 
     const { cart }: PropTypes = useTypedSelector((s: ReducerStateTypes) => s.load)
 
@@ -53,22 +60,37 @@ function Navbar() {
                         )
                     })}
                 </ul>
-
-                <NavLink to='cart' className='nav__wrapper'>
-                    <div className='nav__cart'
-                        onClick={() => window.scrollTo(0, 0)}>
-                        <RiShoppingCartLine />
-                        <p className='nav__cart-title'>Cart:</p>
-                        {price}
-                    </div>
-                </NavLink>
-                <NavLink to='register' className='nav__wrapper'>
-                    <div className='nav__profile'
-                        onClick={() => window.scrollTo(0, 0)}>
-                        <GoSignIn />
-                        <p className='nav__profile-title'>Sign In/Up</p>
-                    </div>
-                </NavLink>
+                <div className='nav__block'>
+                    <NavLink to='cart' className='nav__wrapper'>
+                        <div onClick={() => window.scrollTo(0, 0)}>
+                            <RiShoppingCartLine />
+                            <p className='nav__title'>Cart:</p>
+                            {price}
+                        </div>
+                    </NavLink>
+                    {!userId ?
+                        <NavLink to='register' className='nav__wrapper'>
+                            <div>
+                                <GoSignIn />
+                                <p className='nav__title'>Sign In/Up</p>
+                            </div>
+                        </NavLink> :
+                        <>
+                            <NavLink to='profile' className='nav__wrapper'>
+                                <div>
+                                    <BsPersonSquare />
+                                    <p className='nav__title'>Cabinet</p>
+                                </div>
+                            </NavLink>
+                            <NavLink to='/' className='nav__wrapper'>
+                                <div onClick={() => dispatch(getUserId(''))}>
+                                    <MdExitToApp style={{ fontSize: '1.3rem' }} />
+                                    <p className='nav__title'>Exit</p>
+                                </div>
+                            </NavLink>
+                        </>
+                    }
+                </div>
             </nav>
 
         </>

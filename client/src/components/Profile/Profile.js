@@ -6,7 +6,7 @@ function Profile() {
     const { userId } = useTypedSelector(s => s.register)
 
     useEffect(() => {
-        if (userId !== '') {
+        if (userId) {
             fetch(`/users?_id=${userId}`)
                 .then(res => {
                     if (!res.ok) {
