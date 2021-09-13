@@ -13,6 +13,22 @@ function Cart() {
     const dispatch = useDispatch()
     const { load: { cart }, register: { userId } } = useTypedSelector(s => s)
 
+    const sendOrder = async () => {
+        setOpenForm(true)
+        await fetch('/order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json;charset=utf-8' },
+            body: JSON.stringify({
+                userId: userId,
+                cart: cart
+            })
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(e => console.log(e))
+
+    }
+
     if (cart.length === 0) { return <CartEmpty /> }
     if (openForm) {
         if (!userId) {
@@ -34,7 +50,7 @@ function Cart() {
                         />
                     )
                 })}
-                <button className='cart-button' onClick={() => setOpenForm(true)}>
+                <button className='cart-button' onClick={sendOrder}>
                     Place order
                 </button>
             </div>

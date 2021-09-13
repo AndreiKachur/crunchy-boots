@@ -22,10 +22,16 @@
         height: 130px;
     }
     &:hover{
-        // border: 2px solid $pink;
         background: $lightpink;
         color: $dark-pink;
         box-shadow: 0px 0px 1px $lightpink;
+    }
+    &__order{
+        &:hover{
+            background: $grey;
+            color: $dark-grey;
+            box-shadow: 0px 0px 1px $dark-grey;
+        }
     }
 
     &__img{
@@ -66,6 +72,9 @@
             width:100px;
             font-size: 1.5rem;
             
+        }
+        &__order{
+            right:.8rem
         }
     }
     &__actions{

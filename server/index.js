@@ -4,8 +4,11 @@ const config = require('config')
 const mongoose = require('mongoose')
 const Boots = require('./models/boots.js')
 const User = require('./models/user.js')
+const Order = require('./models/order.js')
 const profile = require('./routes/profile')
 const login = require('./routes/login')
+const order = require('./routes/order')
+const { db } = require('./models/boots.js')
 
 const app = express()
 
@@ -23,6 +26,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/profile', profile)
 app.use('/login', login)
+app.use('/order', order)
 
 const PORT = process.env.PORT || config.get('port')
 
@@ -30,10 +34,13 @@ app.get('/boots', async (req, res) => {
     const boots = await Boots.find()
     res.status(200).json(boots)
 })
-app.get('/users', async (req, res) => {
-    console.log(req.query.userId)
+app.get('/user', async (req, res) => {
     const user = await User.find(req.query)
     res.json(user)
+})
+app.get('/orders', async (req, res) => {
+    const orders = await Order.find(req.query)
+    res.json(orders)
 })
 
 async function start() {
@@ -42,18 +49,12 @@ async function start() {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-
-        // const candidate = await User.findOne()
-        // if (!candidate) {
-        //     const user = new User({
-        //         username: 'Andrei',
-        //         email: 'underfil@mail.ru',
-        //         phoneNumber: 89030152804,
-        //         cart: { items: [] }
-        //     })
-        //     await user.save()
-        // }
-
+        // const common = await db.collection('common')
+        // console.log(common);
+        // db.collection('common').insertOne({ lastOrderNumber: 0 })
+        // const num = await db.collection('common').find().toArray()
+        // await db.collection('common').updateOne({ id: "1" }, { $set: { lastOrderNumber: 2 } })
+        // const num = (await db.collection('common').findOne({ id: "1" })).lastOrderNumber
 
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`)
