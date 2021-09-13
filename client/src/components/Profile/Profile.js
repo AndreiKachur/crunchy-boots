@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../redux/reducers'
+import { getOrders, loginRequested } from '../../redux/actions/actions-reg'
 import Order from '../Order'
+import Spinner from '../Spinner'
 import './Profile.scss'
 
 function Profile() {
     const [state, setState] = useState({})
-    const [orders, setOrders] = useState([])
-    const { userId } = useTypedSelector(s => s.register)
+    const [waiting, setWaiting] = useState(true)
+    const { userId, orders, loading } = useTypedSelector(s => s.register)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (userId) {
+            dispatch(loginRequested())
+
             fetch(`/user?_id=${userId}`)
                 .then(res => {
                     if (!res.ok) {
@@ -28,9 +34,17 @@ function Profile() {
                     }
                     return res.json()
                 })
-                .then((res) => setOrders(res))
+                .then((res) => dispatch(getOrders(res)))
         }
-    }, [userId])
+    }, [userId, dispatch])
+
+    useEffect(() => {
+        const timerId = setTimeout(() => setWaiting(false), 800)
+        return () => clearTimeout(timerId)
+    }, [])
+
+    if (loading) return <Spinner />
+
     if (state.email) {
         const { username, email, password } = state
 
@@ -46,30 +60,29 @@ function Profile() {
         return (
             <>
                 <div className='cart-wrapper profile'>
-                    <h1>Hello, {username}.</h1>
-                    <h3>This is your profile enter data:</h3> <hr />
+                    <h1>Hello, {username}.</h1><hr />
                     <h4>login: </h4>
                     <h3>{email}</h3> <hr />
                     <h4>password:</h4>
                     <h3> {password}</h3> <hr />
                 </div>
-                {orders.length && (
+                {orders.length > 0 ? (
                     orders
                         .sort((a, b) => b.orderNumber - a.orderNumber)
                         .map((item, i) => {
-                            return (<>
+                            return (<div key={item.date}>
                                 <h3 className='cart-wrapper profile'>{putOrderData(i)}<hr /></h3>
-                                <Order cart={item.cart} key={item.date} />
-                            </>
+                                <Order cart={item.cart} />
+                            </div>
                             )
                         })
-                )}
+                ) : null}
             </>
         )
     } else {
         return (
-            <div style={{ margin: '5rem' }}>
-                <h1>Incorrect login data.</h1>
+            <div className='profile__incorrect'>
+                <h1>{!waiting && 'Incorrect login data.'}</h1>
             </div>
         )
     }

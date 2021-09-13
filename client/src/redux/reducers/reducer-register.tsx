@@ -3,7 +3,9 @@ import { ActionsType, RegisterType, TL } from '../../types/register-types'
 const initialState: RegisterType = {
     userId: '',
     newbie: undefined,
-    loading: false
+    loading: false,
+    orders: [],
+    placeOrder: false
 }
 
 const regReducer = (state = initialState, actions: ActionsType): RegisterType => {
@@ -19,7 +21,17 @@ const regReducer = (state = initialState, actions: ActionsType): RegisterType =>
         }
         case TL.USER_ID: return {
             ...state,
-            userId: actions.payload
+            userId: actions.payload,
+            loading: false
+        }
+        case TL.ORDERS: return {
+            ...state,
+            orders: actions.payload,
+            loading: false
+        }
+        case TL.PLACE_ORDER: return {
+            ...state,
+            placeOrder: actions.payload
         }
 
         default: return state

@@ -19,6 +19,7 @@ export enum TL {
     CHECK_SIZE = 'CHECK_SIZE',
     DELETE_FROM_CART = 'DELETE_FROM_CART',
     BROWSE_PICS = 'BROWSE_PICS',
+    EMPTY_CART = 'EMPTY_CART',
 }
 
 export interface PicsType {
@@ -55,6 +56,9 @@ export interface DeleteFromCartAT {
     type: TL.DELETE_FROM_CART;
     idSize: number;
 }
+export interface EmptyCartAT {
+    type: TL.EMPTY_CART;
+}
 
 export type ActionsType = BootsLoadedAT | BootsRequestedAT | ChangeCartAT
-    | ChangeCartAT | CheckSizeAT | DeleteFromCartAT
+    | ChangeCartAT | CheckSizeAT | DeleteFromCartAT | EmptyCartAT

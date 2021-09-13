@@ -19,10 +19,10 @@ export default function validateInfo(values: ValuesTypes) {
   let errors: ErrorsTypes = {};
 
   if (!values.username.trim()) {
-    errors.username = 'Username required';
+    errors.username = 'Username is required';
   }
   if (!values.phoneNumber) {
-    errors.phoneNumber = 'Phone number required';
+    errors.phoneNumber = 'Phone number is required';
   } else if (values.phoneNumber.length !== 12) {
     errors.phoneNumber = 'Phone number is invalid';
   }

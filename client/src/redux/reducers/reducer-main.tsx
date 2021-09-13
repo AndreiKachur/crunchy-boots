@@ -139,6 +139,11 @@ const mainReducer = (
                     newItem,
                 ...boots.slice(itemId)]
             }
+        case TL.EMPTY_CART:
+            return {
+                ...state,
+                cart: []
+            }
 
         default: return state
     }

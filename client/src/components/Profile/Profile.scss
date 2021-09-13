@@ -7,4 +7,9 @@
     & h3, h4{
         padding: .3rem 0 .3rem 0;
     }
+    &__incorrect{
+        margin: 5rem; 
+        color: $darkest-grey;
+        text-align: center;
+    }
 }

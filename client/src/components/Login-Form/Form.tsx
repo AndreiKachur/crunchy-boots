@@ -12,6 +12,8 @@ interface PropTypes {
 const Form = ({ closeForm, newbie }: PropTypes) => {
 
   const [sended, setSended] = useState(false)
+  const [signIn, setSignIn] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
     <>
@@ -21,18 +23,24 @@ const Form = ({ closeForm, newbie }: PropTypes) => {
           <img className='form-img' src='img/img-2.svg' alt='spaceship' />
         </div>
 
-        {sended && <FormSuccess />}
+        {sended && isSubmitted && <FormSuccess signIn={signIn} />}
 
         {newbie ?
           <FormSignUp
             sended={sended}
             onSended={() => setSended(true)}
-            submitForm={() => { }} />
+            submitForm={() => setIsSubmitted(true)}
+            isSubmitted={isSubmitted}
+            isSignIn={() => setSignIn(false)}
+          />
           :
           <FormSignIn
             sended={sended}
             onSended={() => setSended(true)}
-            submitForm={() => { }} />
+            submitForm={() => setIsSubmitted(true)}
+            isSubmitted={isSubmitted}
+            isSignIn={() => setSignIn(true)}
+          />
         }
 
       </div>

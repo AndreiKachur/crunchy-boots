@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import { getUserId } from '../../redux/actions/actions-reg';
 
-const useForm = (callback: any, validate: any) => {
+const useForm = (callback: any, validate: any, isSignIn: any) => {
 
   const dispatch = useDispatch()
 
@@ -13,6 +13,7 @@ const useForm = (callback: any, validate: any) => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailExist, setEmailExist] = useState(false);
 
   const handleNumberChange = (number: string) => {
     setValues({
@@ -40,8 +41,18 @@ const useForm = (callback: any, validate: any) => {
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify({ user })
     })
-      .then(res => res.json())
-      .then(data => dispatch(getUserId(data)))
+      .then(res => {
+        if (!res.ok) {
+          setEmailExist(true)
+          throw new Error(`Could not create user, status ${res.status}`)
+        }
+        return res.json()
+      })
+      .then(data => {
+        isSignIn()
+        dispatch(getUserId(data))
+        callback()
+      })
       .catch(e => {
         console.log(e)
         dispatch(getUserId(''))
@@ -50,6 +61,7 @@ const useForm = (callback: any, validate: any) => {
 
   useEffect(
     () => {
+      setEmailExist(false)
       if (Object.keys(errors).length === 0 && isSubmitting) {
         const pass = Math.random().toString().slice(2, 6)
         const user = {
@@ -58,15 +70,12 @@ const useForm = (callback: any, validate: any) => {
           phoneNumber: values.phoneNumber,
           password: pass
         }
-
         sendForm(user)
-
-        // callback();
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [errors]);
 
-  return { handleChange, handleNumberChange, handleSubmit, values, errors };
+  return { handleChange, handleNumberChange, handleSubmit, values, errors, emailExist };
 };
 
 export default useForm;

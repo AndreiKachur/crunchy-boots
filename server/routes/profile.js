@@ -11,7 +11,6 @@ router.post('/', async (req, res) => {
             phoneNumber: user.phoneNumber,
             password: user.password
         })
-        console.log(candidate);
         await candidate.save()
 
         const createdUser = await User.findOne({ email: user.email })

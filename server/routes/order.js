@@ -20,7 +20,8 @@ router.post('/', async (req, res) => {
         await Common.updateOne({ id: "1" }, { $set: { lastOrderNumber: orderNumber } })
         await order.save()
 
-        res.json({ message: 'Order was placed.' })
+        const orders = await Order.find({ userId: userId })
+        res.json(orders)
 
     } catch (e) {
         console.log(e);
