@@ -16,12 +16,9 @@ export function fetchBoots(url: string) {
                 }
                 return res.json()
             })
-            .then((boots: DbItem[]) => {
-                console.log(boots)
-                dispatch({
-                    type: TL.BOOTS_LOADED,
-                    payload: boots.sort((a, b) => a.id - b.id)
-                })
-            })
+            .then((boots: DbItem[]) => dispatch({
+                type: TL.BOOTS_LOADED,
+                payload: boots.sort((a, b) => a.id - b.id)
+            }))
     }
 }

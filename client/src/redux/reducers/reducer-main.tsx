@@ -20,12 +20,8 @@ const mainReducer = (
     let idx, id, idSize: number, newBoots,
         newBoot: CartItem, newItem: CartItem
 
-    console.log('reducer')
-
     switch (actions.type) {
         case TL.BOOTS_LOADED:
-            console.log('loaded')
-            console.log(actions.payload);
 
             return {
                 ...state,
