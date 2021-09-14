@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import { getUserId } from '../../redux/actions/actions-reg';
 
-const useForm = (callback: any, validate: any, isSignIn: any) => {
+const useForm = (callback: any, validate: any) => {
 
   const dispatch = useDispatch()
 
@@ -49,7 +49,6 @@ const useForm = (callback: any, validate: any, isSignIn: any) => {
         return res.json()
       })
       .then(data => {
-        isSignIn()
         dispatch(getUserId(data))
         callback()
       })

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useTypedSelector } from '../../redux/reducers'
 import { Redirect } from 'react-router-dom'
 
-const FormSuccess = ({ signIn }: any) => {
+const FormSuccess = () => {
   const [redirect, setRedirect] = useState(false);
   const { placeOrder } = useTypedSelector(s => s.register)
 
@@ -20,14 +20,11 @@ const FormSuccess = ({ signIn }: any) => {
     }
   }
   return (
-    <div className={signIn ? 'form-content-success form-content-success_dark'
-      : 'form-content-success'}>
+    <div className='form-content-success'>
       <h2 className='form-success'>
         Completed successfully.{placeOrder && ' Now you can place your order.'}
       </h2>
-      { signIn ?
-        <img className='form-img-2' src='img/img-3.svg' alt='success' />
-        : <img className='form-img-2' src='img/img-4.svg' alt='success' />}
+      <img className='form-img-2' src='img/img-3.svg' alt='success' />
     </div>
   );
 };

@@ -4,10 +4,10 @@ import useForm from './useForm';
 import './Form.scss';
 import 'react-phone-number-input/style.css'
 
-const FormSignup = ({ isSubmitted, submitForm, onSended, sended, isSignIn }: any) => {
+const FormSignup = ({ isSubmitted, submitForm, onSended, sended }: any) => {
 
   const { handleChange, handleSubmit, handleNumberChange,
-    values, errors, emailExist }: any = useForm(submitForm, validate, isSignIn);
+    values, errors, emailExist }: any = useForm(submitForm, validate);
 
   return (
     <div className='form-content-right' hidden={sended && isSubmitted}>

@@ -92,10 +92,8 @@
 .form-content-success {
   border-radius: 0 10px 10px 0;
   position: relative;
-  background: linear-gradient(90deg, $salad 0%, rgb(114, 175, 16) 100%);
-  &_dark{
-    background: linear-gradient(90deg, $dark-grey 0%, rgb(33, 40, 47) 100%);
-  }
+  background: linear-gradient(90deg, $dark-grey 0%, rgb(33, 40, 47) 100%);
+  
   @media(max-width:700px){
     border-radius: 10px;
   }

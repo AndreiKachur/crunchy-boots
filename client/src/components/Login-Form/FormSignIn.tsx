@@ -4,7 +4,7 @@ import { getUserId } from '../../redux/actions/actions-reg';
 import 'react-phone-number-input/style.css'
 import './Form.scss';
 
-const FormSignIn = ({ onSended, sended, submitForm, isSubmitted, isSignIn }: any) => {
+const FormSignIn = ({ onSended, sended, submitForm, isSubmitted }: any) => {
 
   const dispatch = useDispatch()
 
@@ -39,7 +39,6 @@ const FormSignIn = ({ onSended, sended, submitForm, isSubmitted, isSignIn }: any
       })
       .then(data => {
         submitForm()
-        isSignIn()
         return dispatch(getUserId(data))
       })
       .catch(e => {
