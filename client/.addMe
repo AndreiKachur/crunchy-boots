@@ -1,3 +1,0 @@
-for dev addMe to client/package.json:
-
-"proxy": "http://localhost:5000",
