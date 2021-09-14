@@ -7,6 +7,7 @@ const Order = require('./models/order.js')
 const profile = require('./routes/profile')
 const login = require('./routes/login')
 const order = require('./routes/order')
+const keys = require('./keys')
 
 const app = express()
 
@@ -17,7 +18,7 @@ app.use('/profile', profile)
 app.use('/login', login)
 app.use('/order', order)
 
-const PORT = process.env.PORT || config.get('port')
+const PORT = process.env.PORT || keys.BASE_PORT
 
 app.get('/boots', async (req, res) => {
     const boots = await Boots.find()
@@ -34,7 +35,7 @@ app.get('/orders', async (req, res) => {
 
 async function start() {
     try {
-        await mongoose.connect(config.get('uri'), {
+        await mongoose.connect(keys.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })

@@ -1,7 +1,8 @@
-/server/config
-/server/node_modules
-/client/node_modules
-/client/package-lock.json
-/server/package-lock.json
+server/config
+server/node_modules
+client/node_modules
+client/package-lock.json
+server/package-lock.json
+server/keys/keys.dev.js
 
 node_modules
