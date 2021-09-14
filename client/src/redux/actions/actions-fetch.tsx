@@ -9,6 +9,7 @@ export function fetchBoots(url: string) {
 
         fetch(url)
             .then(res => {
+                console.log('boots was fetch to actions-fetch')
                 if (!res.ok) {
                     throw new Error(`Could not fetch boots,
                                 status ${res.status}`)

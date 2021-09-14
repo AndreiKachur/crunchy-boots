@@ -21,7 +21,8 @@ function App() {
 
   React.useEffect(() => {
     if (boots.length === 0) {
-      dispatch(fetchBoots('/boots'))
+      console.log('fetch boots');
+      dispatch(fetchBoots('/boots/'))
     }
   }, []) // eslint-disable-line
 

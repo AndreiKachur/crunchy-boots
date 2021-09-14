@@ -28,6 +28,8 @@ const PORT = process.env.PORT || keys.BASE_PORT
 
 app.get('/boots', async (req, res) => {
     const boots = await Boots.find()
+    console.log('I got boots')
+    console.log(boots)
     res.status(200).json(boots)
 })
 app.get('/user', async (req, res) => {
