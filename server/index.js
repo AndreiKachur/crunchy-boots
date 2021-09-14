@@ -18,9 +18,6 @@ app.use('/profile', profile)
 app.use('/login', login)
 app.use('/order', order)
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/build')))
-}
 const PORT = process.env.PORT || 5000
 
 app.get('/boots', async (req, res) => {
@@ -36,9 +33,11 @@ app.get('/orders', async (req, res) => {
     res.json(orders)
 })
 if (process.env.NODE_ENV === 'production') {
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
-    })
+    app.use(express.static(path.join(__dirname, '../client/build')))
+
+    // app.get('*', (req, res) => {
+    //     res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+    // })
 }
 
 async function start() {

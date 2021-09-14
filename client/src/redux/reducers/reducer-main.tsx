@@ -34,6 +34,7 @@ const mainReducer = (
                 loading: true,
             }
         case TL.CHANGE_CART:
+            console.log('change')
             id = actions.id
             idSize = actions.idSize
             idx = findIdx(cart, idSize)

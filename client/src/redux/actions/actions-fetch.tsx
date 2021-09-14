@@ -17,7 +17,7 @@ export function fetchBoots(url: string) {
             })
             .then((boots: DbItem[]) => dispatch({
                 type: TL.BOOTS_LOADED,
-                payload: boots
+                payload: boots.sort((a, b) => a.id - b.id)
             }))
     }
 }
