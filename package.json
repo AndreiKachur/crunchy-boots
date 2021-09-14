@@ -9,7 +9,8 @@
     "client-server": "concurrently \"npm run json-server\" \"npm run client\"",
     "server": "cd server && npm run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node index.js --prefix server"
+    "start": "cd server && node index.js",
+    "heroku-postbuild": "cd client && npm i && npm run build"
   },
   "repository": {
     "type": "git",
