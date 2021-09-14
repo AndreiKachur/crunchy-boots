@@ -1,6 +1,6 @@
 const express = require('express')
-const path = require('path')
 const mongoose = require('mongoose')
+const path = require('path')
 const Boots = require('./models/boots.js')
 const User = require('./models/user.js')
 const Order = require('./models/order.js')
@@ -18,8 +18,6 @@ app.use('/profile', profile)
 app.use('/login', login)
 app.use('/order', order)
 
-const PORT = process.env.PORT || 5000
-
 app.get('/boots', async (req, res) => {
     const boots = await Boots.find()
     res.json(boots)
@@ -32,12 +30,9 @@ app.get('/orders', async (req, res) => {
     const orders = await Order.find(req.query)
     res.json(orders)
 })
+
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')))
-
-    // app.get('*', (req, res) => {
-    //     res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
-    // })
 }
 
 async function start() {
@@ -46,7 +41,7 @@ async function start() {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-        app.listen(PORT, () => {
+        app.listen(process.env.PORT || 5000, () => {
             console.log(`Server is running on port ${PORT}`)
         })
 
