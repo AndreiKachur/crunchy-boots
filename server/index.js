@@ -29,13 +29,17 @@ const PORT = process.env.PORT || keys.BASE_PORT
 app.get('/boots', async (req, res) => {
     const boots = await Boots.find()
 
-    if (Array.isArray(boots)) {
+    if (Array.isArray(boots) && boots.length > 10) {
         res.json(boots)
     } else if (boots === undefined) {
+        res.status(530)
         throw new Error('Boots undefined')
     } else {
+        res.status(540)
         throw new Error('This is not an Array')
     }
+    res.status(550)
+
 })
 app.get('/user', async (req, res) => {
     const user = await User.find(req.query)
