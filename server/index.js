@@ -20,9 +20,6 @@ app.use('/order', order)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')))
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
-    })
 }
 const PORT = process.env.PORT || 5000
 
@@ -38,6 +35,11 @@ app.get('/orders', async (req, res) => {
     const orders = await Order.find(req.query)
     res.json(orders)
 })
+if (process.env.NODE_ENV === 'production') {
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+    })
+}
 
 async function start() {
     try {
