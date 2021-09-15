@@ -61,7 +61,7 @@
         justify-content: center;
         flex-direction: row;
         z-index: 200;
-        font-size: 1.2rem;
+        font-size: 1rem;
         @media (max-width:1025px){
             display:none;
         }
@@ -92,6 +92,7 @@
         right: 1.5rem;
         display: flex;
         justify-content: space-between;
+        font-size: 1rem;
         @media (max-width:1025px){
             right: .8rem;
         }
@@ -99,7 +100,7 @@
             display: flex;
             margin-right:0.5rem;
             align-items: center;
-            border: 2px solid $whity;
+            // border: 1px solid $whity;
             border-radius: 5px;
             padding: 0 .5rem;
             z-index: 250;

@@ -9,6 +9,7 @@ import './Profile.scss'
 function Profile() {
     const [state, setState] = useState({})
     const [waiting, setWaiting] = useState(true)
+    const [showPass, setShowPass] = useState(false)
     const { userId, orders, loading } = useTypedSelector(s => s.register)
     const dispatch = useDispatch()
 
@@ -47,6 +48,8 @@ function Profile() {
 
     if (state.email) {
         const { username, email, password } = state
+        let pass = showPass ? password : '****'
+        let btnText = showPass ? 'HIDE ME' : 'SHOW ME'
 
         const putOrderData = (i) => {
             const { orderNumber, date } = orders[i]
@@ -64,14 +67,22 @@ function Profile() {
                     <h4>login: </h4>
                     <h3>{email}</h3> <hr />
                     <h4>password:</h4>
-                    <h3> {password}</h3> <hr />
+                    <h3>
+                        {pass}
+                        <button className='profile__pass-btn'
+                            onClick={() => setShowPass(!showPass)}>
+                            {btnText}
+                        </button>
+                    </h3>
+                    <hr />
                 </div>
                 {orders.length > 0 ? (
                     orders
                         .sort((a, b) => b.orderNumber - a.orderNumber)
                         .map((item, i) => {
                             return (<div key={item.date}>
-                                <h3 className='cart-wrapper profile'>{putOrderData(i)}<hr /></h3>
+                                <h3 className='profile_padding profile_margin'>{putOrderData(i)}</h3>
+                                <hr className='profile_margin' />
                                 <Order cart={item.cart} />
                             </div>
                             )
