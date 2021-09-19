@@ -16,7 +16,16 @@ html{
     scroll-behavior: smooth;
 }
 .not-found{
-    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: $darkest-grey;
+    height: 88vh;
+    & img{
+        width: 50vw;
+        @media(max-width:1100px){
+            width:80vw
+        }
+    }
 }
 

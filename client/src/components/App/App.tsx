@@ -11,6 +11,7 @@ import Login from '../Login'
 import Profile from '../Profile'
 import Footer from '../Footer'
 import Cart from '../Cart'
+import NotFound from './NotFound'
 import ScrollUp from '../ScrollUp'
 import './App.scss';
 
@@ -30,13 +31,13 @@ function App() {
       <Navbar />
       <ScrollUp />
       <Switch>
-        <Route path='/' exact component={Main} />
-        <Route path='/sneakers' component={ItemsList} />
-        <Route path='/contacts' component={Footer} />
-        <Route path='/cart' component={Cart} />
-        <Route path='/register' component={Login} />
-        <Route path='/profile' component={Profile} />
-        <Route render={() => <h1 className='not-found'>Page not found</h1>} />
+        <Route exact path='/' component={Main} />
+        <Route exact path='/sneakers' component={ItemsList} />
+        <Route exact path='/contacts' component={Footer} />
+        <Route exact path='/cart' component={Cart} />
+        <Route exact path='/register' component={Login} />
+        <Route exact path='/profile' component={Profile} />
+        <Route component={NotFound} />
       </Switch>
     </Router>
   );
