@@ -9,9 +9,11 @@ function Cart() {
                 <img src={EmptyCart} alt='cart-empty' />
                 <div className='cart-empty__text'>
                     <h3>It seems, you haven't choosen anything.</h3>
-                    <NavLink to='/' className='nav__wrapper'>
-                        <div className='cart-empty__not-worry'>don't worry!</div>
-                    </NavLink>
+                    <div className='nav__wrapper'>
+                        <NavLink to='/' >
+                            <div className='cart-empty__not-worry'>don't worry!</div>
+                        </NavLink>
+                    </div>
                     <h3> Just go back and pick one.</h3>
                 </div>
             </div>
