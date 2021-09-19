@@ -1,41 +1,22 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../redux/reducers'
-import { getOrders, loginRequested } from '../../redux/actions/actions-reg'
+import { fetchItems } from '../../redux/actions/actions-fetch'
 import Order from '../Order'
 import Spinner from '../Spinner'
 import './Profile.scss'
 
 function Profile() {
-    const [state, setState] = useState({})
+
     const [waiting, setWaiting] = useState(true)
     const [showPass, setShowPass] = useState(false)
-    const { userId, orders, loading } = useTypedSelector(s => s.register)
+    const { userId, orders, loading, user } = useTypedSelector(s => s.register)
     const dispatch = useDispatch()
 
     useEffect(() => {
         if (userId) {
-            dispatch(loginRequested())
-
-            fetch(`/user?_id=${userId}`)
-                .then(res => {
-                    if (!res.ok) {
-                        throw new Error(`Could not fetch user,
-                            status ${res.status}`)
-                    }
-                    return res.json()
-                })
-                .then((res) => setState(...res))
-
-            fetch(`/orders?userId=${userId}`)
-                .then(res => {
-                    if (!res.ok) {
-                        throw new Error(`Could not fetch user,
-                            status ${res.status}`)
-                    }
-                    return res.json()
-                })
-                .then((res) => dispatch(getOrders(res)))
+            dispatch(fetchItems(`/user?_id=${userId}`))
+            dispatch(fetchItems(`/orders?userId=${userId}`))
         }
     }, [userId, dispatch])
 
@@ -46,8 +27,8 @@ function Profile() {
 
     if (loading) return <Spinner />
 
-    if (state.email) {
-        const { username, email, password } = state
+    if (user) {
+        const { username, email, password } = user
         let pass = showPass ? password : '****'
         let btnText = showPass ? 'HIDE ME' : 'SHOW ME'
 
@@ -55,9 +36,13 @@ function Profile() {
             const { orderNumber, date } = orders[i]
             const orderNum = orderNumber > 10 ? `00${orderNumber}` : `000${orderNumber}`
             const d = new Date(+date)
-            let month = (d.getMonth() + 1)
-            month = month < 10 ? `0${month}` : month
-            return `Order №${orderNum} from ${d.getDate()}-${month}-${d.getFullYear()}`
+
+            const month = d.getMonth() + 1
+            const day = d.getDate()
+
+            const formatDate = datePart => datePart < 10 ? `0${datePart}` : datePart
+
+            return `Order №${orderNum} from ${formatDate(day)}-${formatDate(month)}-${d.getFullYear()}`
         }
 
         return (

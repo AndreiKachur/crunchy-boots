@@ -5,7 +5,8 @@ const initialState: RegisterType = {
     newbie: undefined,
     loading: false,
     orders: [],
-    placeOrder: false
+    placeOrder: false,
+    user: undefined
 }
 
 const regReducer = (state = initialState, actions: ActionsType): RegisterType => {
@@ -26,7 +27,11 @@ const regReducer = (state = initialState, actions: ActionsType): RegisterType =>
         }
         case TL.ORDERS: return {
             ...state,
-            orders: actions.payload,
+            orders: actions.payload
+        }
+        case TL.USER: return {
+            ...state,
+            user: actions.payload,
             loading: false
         }
         case TL.PLACE_ORDER: return {

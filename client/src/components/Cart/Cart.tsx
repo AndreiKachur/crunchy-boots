@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { onDelete, setEmptyCart } from '../../redux/actions/actions'
+import { onDelete } from '../../redux/actions/actions'
+import { sendItems } from '../../redux/actions/actions-send'
 import { useTypedSelector } from '../../redux/reducers'
-import { getOrders, setOrder } from '../../redux/actions/actions-reg'
 import CartEmpty from '../CartEmpty'
 import CartItem from '../CartItem'
 import './Cart.scss';
@@ -16,28 +16,11 @@ function Cart() {
 
     const sendOrder = async () => {
         setOpenForm(true)
-        if (userId) {
-            dispatch(setOrder(false))
-
-            await fetch('/order', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json;charset=utf-8' },
-                body: JSON.stringify({
-                    userId: userId,
-                    cart: cart
-                })
-            })
-                .then(res => res.json())
-                .then(orders => {
-                    dispatch(getOrders(orders))
-                    dispatch(setEmptyCart())
-                })
-                .catch(e => console.log(e))
-        } else { dispatch(setOrder()) }
-
+        dispatch(sendItems('/order', userId, cart))
     }
 
     if (cart.length === 0) { return <CartEmpty /> }
+
     if (openForm) {
         if (!userId) {
             return <Redirect to='/register' />

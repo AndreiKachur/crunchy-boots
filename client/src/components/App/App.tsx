@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../redux/reducers'
 
-import { fetchBoots } from '../../redux/actions/actions-fetch'
+import { fetchItems } from '../../redux/actions/actions-fetch'
 import Navbar from '../Navbar'
 import Main from '../Main'
 import ItemsList from '../ItemsList'
@@ -21,7 +21,7 @@ function App() {
 
   React.useEffect(() => {
     if (boots.length === 0) {
-      dispatch(fetchBoots('/boots'))
+      dispatch(fetchItems('/boots'))
     }
   }, []) // eslint-disable-line
 
@@ -36,6 +36,7 @@ function App() {
         <Route path='/cart' component={Cart} />
         <Route path='/register' component={Login} />
         <Route path='/profile' component={Profile} />
+        <Route render={() => <h1 className='not-found'>Page not found</h1>} />
       </Switch>
     </Router>
   );

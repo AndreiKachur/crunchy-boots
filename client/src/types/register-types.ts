@@ -4,7 +4,13 @@ export interface RegisterType {
     newbie?: boolean;
     loading: boolean;
     orders: any;
-    placeOrder: boolean
+    placeOrder: boolean;
+    user: {
+        email: string;
+        password: string;
+        phoneNumber: string;
+        userName: string
+    } | undefined
 }
 
 //TL -> TypeList
@@ -13,7 +19,8 @@ export enum TL {
     USER_ID = 'USER_ID',
     LOGIN_REQUESTED = 'LOGIN_REQUESTED',
     ORDERS = 'ORDERS',
-    PLACE_ORDER = 'PLACE_ORDER'
+    PLACE_ORDER = 'PLACE_ORDER',
+    USER = 'USER'
 }
 
 
@@ -33,9 +40,14 @@ export interface GetOrdersAT {
     type: TL.ORDERS;
     payload: any;
 }
+export interface GetUserAT {
+    type: TL.USER;
+    payload: any;
+}
 export interface PlaceOrderAT {
     type: TL.PLACE_ORDER;
     payload: boolean;
 }
 
-export type ActionsType = FirstTimeAT | BootsRequestedAT | UserIdAT | GetOrdersAT | PlaceOrderAT
+export type ActionsType = FirstTimeAT | BootsRequestedAT | UserIdAT
+    | GetOrdersAT | PlaceOrderAT | GetUserAT

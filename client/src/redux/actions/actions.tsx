@@ -9,7 +9,6 @@ const changeCart = (id: number, idSize = 0, actualRest = 0,
         cartButton: cartButton,
         number: num
     })
-const setEmptyCart = () => ({ type: TL.EMPTY_CART })
 
 const addSize = (size: number, itemId: number) => ({
     type: TL.CHECK_SIZE,
@@ -25,6 +24,5 @@ export {
     changeCart,
     addSize,
     onDelete,
-    browsePics,
-    setEmptyCart
+    browsePics
 }
