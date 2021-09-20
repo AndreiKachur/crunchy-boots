@@ -71,7 +71,6 @@ const ItemsList: React.FC = () => {
                         } else { return null }
                     })
                 }
-                {/* </Fade> */}
             </main>
         </>
     )

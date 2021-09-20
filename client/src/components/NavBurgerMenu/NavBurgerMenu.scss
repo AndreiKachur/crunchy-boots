@@ -33,11 +33,12 @@
   font-weight: 700;
   height: 4rem;
   color:inherit;
+  background: $grey; 
   font-size: 1.8rem;
   transform: translateX(0%);
   opacity: 1;
 
-  animation: showBurgerLinks 1s;
+  animation: showBurgerLinks 1.6s;
   animation-fill-mode: backwards;
 
   @keyframes showBurgerLinks{
@@ -52,6 +53,7 @@
   }
 
   &:hover{
+      background: $whity;
       color: $dark-pink;
       text-decoration: underline;
   }

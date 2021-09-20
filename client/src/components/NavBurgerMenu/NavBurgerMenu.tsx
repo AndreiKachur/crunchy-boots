@@ -9,8 +9,9 @@ function NavBurgerMenu() {
 
     const [burgerMenu, setBurgerMenu] = useState(false)
 
-    function toogleBurgerMenu() {
+    function toogleBurgerMenu(up = false) {
         setBurgerMenu(!burgerMenu)
+        if (up) window.scrollTo(0, 0)
     }
 
     return (
@@ -19,11 +20,11 @@ function NavBurgerMenu() {
             onClose={toogleBurgerMenu}
             isOpen={burgerMenu}
         >
-            <ul className='burger-menu' onClick={toogleBurgerMenu}>
+            <ul className='burger-menu' onClick={() => toogleBurgerMenu()}>
                 {MenuItems.map((item, index) => {
                     return (
                         <li key={index} className='burger-menu__item' >
-                            <NavLink onClick={toogleBurgerMenu}
+                            <NavLink onClick={() => toogleBurgerMenu(true)}
                                 className='burger-menu__item-links'
                                 to={item.url}>
                                 {item.title}

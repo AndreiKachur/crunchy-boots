@@ -37,7 +37,8 @@ function App() {
         <Route exact path='/cart' component={Cart} />
         <Route exact path='/register' component={Login} />
         <Route exact path='/profile' component={Profile} />
-        <Route component={NotFound} />
+        <Route path='*' component={NotFound} />
+        <Route path='/sneakers/*' component={NotFound} />
       </Switch>
     </Router>
   );

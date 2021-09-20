@@ -1,4 +1,3 @@
-import React from 'react'
 import CardsSlider from '../CardsSlider'
 import ItemsList from '../ItemsList'
 import Footer from '../Footer'
